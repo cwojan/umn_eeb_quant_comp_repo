@@ -22,7 +22,7 @@ R has various ways to iterate, including looping, using functions, and vectoriza
 
     2.  How to write functions
 
-    3.  How to iterate functions with th purr package
+    3.  How to iterate functions with the purr package
 
     4.  How to iterate even faster with parallel computing
 

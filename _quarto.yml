@@ -9,6 +9,12 @@ book:
     - part: "2023/09/29: Loops, Functions, and the purr package"
       chapters:
         - intro_iteration.qmd
+        - loop_types.qmd
+        - when_loops.qmd
+        - functions.qmd
+        - purrr.qmd
+        - parallel_computing.qmd
+        - vectorization.qmd
 
 bibliography: references.bib
 
