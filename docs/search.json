@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "UMN EEB Quant/Comp Repo",
+    "section": "",
+    "text": "Hello!\nThis site/book will serve as a repository for resources related to computational and quantitative workshop held for the University of Minnesota’s Ecology, Evolution, and Behavior Graduate Program through its “Friday Noon Seminar” series."
+  },
+  {
+    "objectID": "intro_iteration.html",
+    "href": "intro_iteration.html",
+    "title": "1  Intro to Iteration",
+    "section": "",
+    "text": "This workshop will be focused on iteration, or performing the same code numerous times, potentially on some range of values, in R. It assumes that you know most of the basics of R programming.\nR has various ways to iterate, including looping, using functions, and vectorization. We will go over each to some extent, with examples included. We will cover the following:\n\nLoops\n\nTypes of loops: for, while, and repeat\nWhen to use which types of loops\nPotential downsides of using loops\nWhen use a loop is still necessary anyway\n\nFunctions and Functionals\n\nBenefits of functions\nHow to write functions\nHow to iterate functions with th purr package\nHow to iterate even faster with parallel computing\n\nVectorization\n\nBenefits of vectorization\nLimitations"
+  }
+]

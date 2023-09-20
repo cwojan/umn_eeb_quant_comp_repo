@@ -3,13 +3,12 @@ project:
   output-dir: docs
 
 book:
-  title: "umn_eeb_quant_comp_repo"
-  author: "Norah Jones"
-  date: "9/20/2023"
+  title: "UMN EEB Quant/Comp Repo"
   chapters:
     - index.qmd
-    part: "2023/09/29: Loops, Functions, and the purr package"
-    - loops_functions_intro.qmd
+    - part: "2023/09/29: Loops, Functions, and the purr package"
+      chapters:
+        - intro_iteration.qmd
 
 bibliography: references.bib
 

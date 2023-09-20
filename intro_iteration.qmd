@@ -1,0 +1,33 @@
+---
+title: "Intro to Iteration"
+---
+
+This workshop will be focused on **iteration**, or performing the same code numerous times, potentially on some range of values, in R. It assumes that you know most of the basics of R programming.
+
+R has various ways to iterate, including looping, using functions, and vectorization. We will go over each to some extent, with examples included. We will cover the following:
+
+1.  Loops
+
+    1.  Types of loops: for, while, and repeat
+
+    2.  When to use which types of loops
+
+    3.  Potential downsides of using loops
+
+    4.  When use a loop is still necessary anyway
+
+2.  Functions and Functionals
+
+    1.  Benefits of functions
+
+    2.  How to write functions
+
+    3.  How to iterate functions with th purr package
+
+    4.  How to iterate even faster with parallel computing
+
+3.  Vectorization
+
+    1.  Benefits of vectorization
+
+    2.  Limitations

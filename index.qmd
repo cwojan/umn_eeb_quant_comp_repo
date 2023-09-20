@@ -1,5 +1,3 @@
-# UMN EEB Quantitative/Computational Workshop Repository {.unnumbered}
-
-Hello!
+# Hello! {.unnumbered}
 
 This site/book will serve as a repository for resources related to computational and quantitative workshop held for the University of Minnesota's Ecology, Evolution, and Behavior Graduate Program through its "Friday Noon Seminar" series.
