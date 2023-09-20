@@ -1,0 +1,22 @@
+project:
+  type: book
+
+book:
+  title: "umn_eeb_quant_comp_repo"
+  author: "Norah Jones"
+  date: "9/20/2023"
+  chapters:
+    - index.qmd
+    part: "2023/09/29: Loops, Functions, and the purr package"
+    - loops_functions_intro.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
