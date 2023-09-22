@@ -4,7 +4,7 @@ title: "Intro to Iteration"
 
 This workshop will be focused on **iteration**, or performing the same code numerous times, potentially on some range of values, in R. It assumes that you know most of the basics of R programming.
 
-R has various ways to iterate, including looping, using functions, and vectorization. We will go over each to some extent, with examples included. We will cover the following:
+R has various ways to iterate, including looping, using functions, and vectorization. We will go over each to some extent, with examples included. A general guideline for iterating is that if you are copying and pasting code multiple times, you may be better served with a loop or a function. We will cover the following:
 
 1.  Loops
 

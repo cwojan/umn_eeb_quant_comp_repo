@@ -6,7 +6,7 @@ book:
   title: "UMN EEB Quant/Comp Repo"
   chapters:
     - index.qmd
-    - part: "2023/09/29: Loops, Functions, and the purr package"
+    - part: "Iteration: Loops, Functions, and the purr package"
       chapters:
         - intro_iteration.qmd
         - loop_types.qmd

@@ -1,3 +1,114 @@
 ---
 title: "Types of Loops"
 ---
+
+The first method of iteration that most people learn is looping, or using flow control to rerun a block of code some number of times, or over a range of values. Many of you will be familiar with this, so we will just review it a bit.
+
+R has different type of loops, including **for**, **while**, and **repeat**.
+
+### for loops
+
+for loops are the most commonly used loop, as they are versatile to many contexts. They generally follow the form:
+
+```{r}
+#| eval: false
+
+for (indexing_variable in range_of_values) {
+  some_function(some_argument = indexing_variable)
+}
+```
+
+In the first line, an indexing variable is created to keep track of iterations, and it iterates through the range of values provided.
+
+Then, some code is provided within brackets to be performed for each value in the range of values. Usually, the indexing variable will be referenced somehow in this code, but it doesn't need to be if you are just doing the same exact thing several times.
+
+Now let's look at some more useful examples:
+
+### while loops
+
+while loops are a bit less common, but can be useful in certain contexts (mostly simulation). They follow this form:
+
+```{r}
+#| eval: false
+
+while (some_condition == TRUE) {
+  some_function()
+}
+```
+
+The first line provides a conditional statement to be evaluated at each iteration, if it is met the loop will continue to run, if it is not met the loop will close.
+
+There are two uses for while loop that I have found. The first is when there is some degree of randomness in how many iterations need to be run. Let's say for example you want to simulate a population of organisms that aggregate in groups, but you want to allow the group sizes to vary while the global population size remains the about the same. In this case, you could use a while loop:
+
+```{r}
+
+## first let's set the population size to 0
+N <- 0
+
+## and create an empty vector for group size
+groups <- NULL
+
+## and a counter variable
+counter <- 1
+
+## now let's start the while loop
+while (N < 100) {
+  ## randomly generate a group size as a pull from a poisson distribution w/ a mean of 5
+  groups[counter] <- rpois(n = 1, lambda = 5)
+  ## calculate total pop size
+  N <- sum(groups)
+  ## increase counter
+  counter <- counter + 1
+}
+```
+
+If you run that code multiple times, you'll see that you will end up with different numbers of groups with different numbers of members. This could be useful for simulation models or parametric bootstrapping. However, you may also notice that the total population size here isn't exactly constant. To keep it constant, you could do something like this:
+
+```{r}
+
+## first let's set the population size to 0
+N <- 0
+
+## and create an empty vector for group size
+groups <- NULL
+
+## and a counter variable
+counter <- 1
+
+## now let's start the while loop
+while (N < 100) {
+  ## calculate remaining population to fill
+  to_fill <- 100 - sum(groups)
+  ## randomly generate a group size as a pull from a poisson distribution w/ a mean of 5
+  ## but if it is larger than the remaining population to fill, just fill it up exactly
+  groups[counter] <- min(rpois(n = 1, lambda = 5), to_fill)
+  ## calculate total pop size
+  N <- sum(groups)
+  ## increase counter
+  counter <- counter + 1
+}
+```
+
+Nifty!
+
+The other use of a while loop that I have found is for a brute force algorithm. Basically, if you have do something complex but don't have the time or mental energy to figure out the precise algorithm to do it, you can do it the "stupid" way. This is basically like trying every combination on a lock until it opens. Computer scientists frown on these methods for being highly inefficient, but we are ~~computer~~ scientists.
+
+Let's say for example...
+
+### repeat loops
+
+repeat loops are a very basic sort of loop that simply do something over an over again until a condition is met, then they close. Here's the form:
+
+```{r}
+#| eval: false
+
+repeat {
+  some_function()
+  if (some_condition == TRUE) break
+}
+
+```
+
+To me they kind of seem like a while loop formatted differently. I suppose you could add multiple "break" points for different end conditions, but I believe you can add "break" commands to any type of loop.
+
+Let me know if you know of cases where repeat loops are effective!
