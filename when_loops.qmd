@@ -1,3 +1,50 @@
 ---
 title: "When to Loop?"
 ---
+
+Now you may have often heard that you should avoid using for loops because they are slow. This isn't strictly true; it depends how you write them. It has to do with how R uses your computer's working memory, but the details are probably not worth getting into. Generally if you avoid the "common pitfalls" linked in the last section, you should be writing loops that are plenty fast. Also, in my personal opinion, I'm not sure how important speed is for most of our work - since we're not developing software or data pipelines for business purposes, we are more interested in the end result and less interested in how long it took our program to get there. All this to say, don't worry about the for loops you use being inefficient. A good guideline might be: do what you need to do now to get your results, and maybe do it a little better next time.
+
+However, there are other reasons not to use for loops that I think are more compelling, and we'll talk about them when we talk about functions. But sometimes you just have to use loops. How can you know?
+
+Basically -
+
+**You need to use a loop when the process of one iteration depends on the outcome of previous iteration/s.**
+
+The while loop we used in the last section is technically an example of a case where a loop is necessary, but let's look at another clearer ecological example: discrete population growth.
+
+Let's use one common formulation of discrete logistic growth:
+
+$$
+N_{t+1} = N_t *e^{r(\frac{K-N_t}{K})}
+$$
+
+Where N is population size, r is growth rate, and K is carrying capacity.
+
+As you can see, that pesky N~t~ is involved in the calculation of N~t+1~, or in other words, the process of calculation for one iteration/timestep depends on the outcome of the previous iteration/timestep. Thus we need to use a loop:
+
+```{r}
+
+## set growth rate, r, and carrying capacity K
+r <- 1
+K <- 100
+
+## set number of timesteps, t, and preallocate population size vector, N
+t <- 20
+N <- vector(mode = "numeric", length = t)
+N[1] <- 1
+
+## loop through timesteps and calculate population size
+## note: we are considering t = 1 as initial pop size
+for (i in 1:(t - 1)) {
+  N[i+1]  = N[i] * exp(r * ((K-N[i])/K))
+}
+
+## plot the output                                 
+plot(1:t, N, type = "o", xlab = "t")
+```
+
+This relatively simple loop is what powers this web app:
+
+<https://cwojan.shinyapps.io/discrete_logistic_growth/>
+
+Cool!

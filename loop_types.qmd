@@ -22,7 +22,79 @@ In the first line, an indexing variable is created to keep track of iterations, 
 
 Then, some code is provided within brackets to be performed for each value in the range of values. Usually, the indexing variable will be referenced somehow in this code, but it doesn't need to be if you are just doing the same exact thing several times.
 
-Now let's look at some more useful examples:
+Here is a really silly working example:
+
+```{r}
+
+## square the numbers 1 through 5
+for (i in 1:5) {
+  print(i^2)
+}
+
+## of course you could just do this instead and get a more useable vector
+(1:5)^2
+```
+
+Now let's look at a more interesting example. Let's say you are interested in the effect of some independent variable on multiple dependent variables. First let's simulate some fake data of greenhouse plant growth under two watering conditions:
+
+```{r}
+## create a data frame with 60 total plants and
+## -two treatment levels, control and drought
+## -plant heights, masses, and seed masses sampling from a normal distribution
+plant_data <- data.frame(treatment = rep(c("control","drought"), each = 30),
+                         height_cm = rnorm(n = 60, mean = rep(c(12,8), each = 30), sd = 2),
+                         dry_biomass_g = rnorm(60, mean = rep(c(50, 40), each = 30), sd = 6),
+                         seed_mass_g = rnorm(60, mean = rep(c(30, 20), each = 30), sd = 4))
+
+```
+
+Now we are probably interested in how the watering influences these variables (i.e., with a t-test), but we don't want to write the code, and then copy and paste it twice. Here's how we use a for loop:
+
+```{r}
+
+## create a vector of dependent variables to loop over
+dep_vars <- c("height_cm", "dry_biomass_g", "seed_mass_g")
+
+## pre allocate a list to store results
+result_list <- vector(mode = "list", length = length(dep_vars))
+
+## let's name the list as well
+names(result_list) <- dep_vars
+
+## set up a loop to iterate through variables
+for (i in dep_vars) {
+  ## store t test results in our list
+  result_list[[i]] <- t.test(plant_data[,i] ~ plant_data[,"treatment"])
+}
+
+## check out the results!
+result_list
+```
+
+When you are writing a for loop (especially ones more complex than the above), it can be helpful to first develop the code within the loop to more easily debug it. For example:
+
+```{r}
+## set the iterator variable to one of the values to be looped through
+i <- dep_vars[1]
+
+## then try coding what you want to do repeatedly
+test_result <- t.test(plant_data[,i] ~ plant_data[,"treatment"])
+test_result
+```
+
+This can be helpful because R, like most programming languages, is very particular about syntax. If you had tried to use the \$ operator to select columns, you would have gotten an error:
+
+```{r}
+#| eval: false
+
+## this doesn't work because i is a character value in quotes, which is incompatible with $
+t.test(plat_data$i ~ plant_data$treatment)
+
+```
+
+There are some "common pitfalls" to writing for loops, which I hope I have avoided here. You can read about them in more detail here:
+
+<https://adv-r.hadley.nz/control-flow.html#common-pitfalls>
 
 ### while loops
 
@@ -91,9 +163,7 @@ while (N < 100) {
 
 Nifty!
 
-The other use of a while loop that I have found is for a brute force algorithm. Basically, if you have do something complex but don't have the time or mental energy to figure out the precise algorithm to do it, you can do it the "stupid" way. This is basically like trying every combination on a lock until it opens. Computer scientists frown on these methods for being highly inefficient, but we are ~~computer~~ scientists.
-
-Let's say for example...
+The other use of a while loop that I have found is for a brute force algorithm. Basically, if you have do something complex but don't have the time or mental energy to figure out the precise algorithm to do it, you can do it the "stupid" way. This is basically like trying every combination on a lock until it opens. Computer scientists frown on these methods for being highly inefficient, but we are ~~computer~~ scientists. For ecology/evolution/behavior contexts, you might use a brute force while loops to try random combinations of data or sample sets of observations with many characteristics until you find a combination/set that meets highly specific criteria that you are looking for (e.g., subsampling a large dataset such that you sample randomly but also cover a wide range of treatment levels, sampling dates, etc.).
 
 ### repeat loops
 

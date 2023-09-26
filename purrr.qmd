@@ -1,0 +1,3 @@
+---
+title: "Functionals with purr"
+---
