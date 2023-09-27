@@ -112,64 +112,14 @@ var_covs
 
 Here we didn't just use "cov" because we wanted to pull the data from the plant_data data frame, so we used a "wrapper" function so that we could more precisely set the arguments of cov().
 
-### Nesting map Functionals
-
-You can also nest map functionals, much like you can nest for loops to loop through the jth part of the ith something or other.
-
-To demonstrate, let's say you had taken out 100 skulls of a certain species from a museum collection and measured the jaw lengths. Then for some vague reason you want to know how your estimate of mean jaw length would change if you had only measured a subset of them. Maybe this would be helpful in determining a good number of skulls to measure of other species to do an exploratory data analysis, assuming variances within species are roughly the same. I don't know if that makes sense, let's just go with it.
-
-In this example, there are two levels of iteration: different sizes of subsamples, and replicates of each subsample size. Thus we need to nest some functionals.
-
-First let's generate some fake skull data, and figure out how to subsample it:
+We can put all of our info together like so:
 
 ```{r}
-## make a vector of jaw_lengths
-jaw_lengths <- rnorm(n = 100, mean = 250, sd = 50)
+plant_covs <- data.frame(var1 = var_coms[1,],
+                         var2 = var_coms[2,],
+                         cov = var_covs)
 
-## save the true mean
-mean_jl <- mean(jaw_lengths)
-
-## try a subsample with the sample function
-subsample_mean_test <- mean(sample(x = jaw_lengths, size = 20, replace = FALSE))
-
-## check diff to true mean
-subsample_mean_test - mean_jl
+plant_covs
 ```
 
-So if that's what we need to do for one subsample, let's make it into a functional form so we can try different subsample sizes:
-
-```{r}
-## try different subsample sizes
-subsample_means <- map_dbl(.x = (1:9) * 10, ## iterate over 10 through 90 by ten
-                                .f = function(s){
-                                  ## calculate sample mean and difference to true mean
-                                  subsample_mean <- mean(sample(x = jaw_lengths, size = s,
-                                                                replace = FALSE))
-                                  return(subsample_mean)
-                                })
-
-## this gives us the means for subsamples of size 10, 20, 30, ...90
-subsample_means
-```
-
-However, this isn't very useful yet since we are only doing one random subsample per size! So we need to replicate by nesting another functional:
-
-```{r}
-## try different subsample sizes
-subsample_means <- map_dbl(.x = (1:9) * 10, ## iterate over 10 through 90 by ten
-                                .f = function(s){
-                                  ## calculate sample mean and difference to true mean
-                                  ## for 1000 replicates
-                                  subsample_means <- map_dbl(.x = 1:1000,
-                                                             .f = function(i){
-                                                             subsample_mean <-
-                                                               mean(sample(x = jaw_lengths, 
-                                                                         size = s,
-                                                                         replace = FALSE))
-                                                             return(subsample_mean)
-                                                         })
-                                  return(subsample_means)
-                                })
-
-map(1:n, \(i) x)⁠
-```
+We could have also plugged the map functional right into our data.frame construction. If you are familiar with dplyr and use mutate, you can mutate new columns using map as well!
