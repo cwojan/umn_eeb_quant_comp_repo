@@ -44,7 +44,7 @@ Now let's look at a more interesting example. Let's say you are interested in th
 plant_data <- data.frame(treatment = rep(c("control","drought"), each = 30),
                          height_cm = rnorm(n = 60, mean = rep(c(12,8), each = 30), sd = 2),
                          dry_biomass_g = rnorm(60, mean = rep(c(50, 40), each = 30), sd = 6),
-                         seed_mass_g = rnorm(60, mean = rep(c(30, 20), each = 30), sd = 4))
+                         seed_mass_mg = rnorm(60, mean = rep(c(30, 20), each = 30), sd = 4))
 
 ```
 
@@ -53,7 +53,7 @@ Now we are probably interested in how the watering influences these variables (i
 ```{r}
 
 ## create a vector of dependent variables to loop over
-dep_vars <- c("height_cm", "dry_biomass_g", "seed_mass_g")
+dep_vars <- c("height_cm", "dry_biomass_g", "seed_mass_mg")
 
 ## pre allocate a list to store results
 result_list <- vector(mode = "list", length = length(dep_vars))

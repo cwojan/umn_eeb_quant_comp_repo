@@ -1,3 +1,175 @@
 ---
 title: "Functionals with purr"
 ---
+
+Now that we've written a function, let's use it efficiently with functionals. Functionals are functions that take other functions as one of their arguments, and then can apply that function a number of times or to a range of values (much like a loop!). Base R has the "apply" family of functionals, including lapply and sapply, but I've found those difficult to learn because they have inconsistent syntax and behavior. Instead, we will use the "map" functionals from the "purrr" package. It's part of the tidyverse, so you likely already have it installed. If not, use this code:
+
+```{r}
+#| eval: false
+
+install.packages("purrr")
+
+```
+
+Now, we can load the package, and make sure we have our fake plant data and quick_t_test function in our environment.
+
+```{r}
+library(purrr)
+
+plant_data <- data.frame(treatment = rep(c("control","drought"), each = 30),
+                         height_cm = rnorm(n = 60, mean = rep(c(12,8), each = 30), sd = 2),
+                         dry_biomass_g = rnorm(60, mean = rep(c(50, 40), each = 30), sd = 6),
+                         seed_mass_mg = rnorm(60, mean = rep(c(30, 20), each = 30), sd = 4))
+
+quick_t_test <- function(dat, treatment, measurement){
+  ## do t test
+  test_result <- t.test(dat[,measurement] ~ dat[,treatment])
+  ## pull out summary
+  clean_result <- data.frame(mean_diff = diff(test_result$estimate),
+                           ci_lwr = test_result$conf.int[1],
+                           ci_upr = test_result$conf.int[2],
+                           p_val = test_result$p.value)
+  ## return the clean_result as output from the function
+  return(clean_result)
+}
+```
+
+### The Basic map Functional
+
+Now let's use the map functional to iterate our quick_t_test function over each of our dependent variables. We simply provide it what we want to iterate over and then we provide the function we want it to do as arguments. Let's go over a simple example first, making vectors of randomly generated numbers of different lengths, 1 through 5.
+
+```{r}
+map_results <- map(.x = 1:5, ## iterate over .x
+                   .f = rnorm) ## and do .f
+
+## we get a list of vectors
+map_results
+```
+
+One thing that is implicitly going on here is that 1:5 is being plugged into the first argument of rnorm by default, which is the number of observations to generate. The mean and sd default to 0 and 1 respectively (as indicated in the help doc for rnorm). However, our function has three arguments with no defaults, so we will need to supply those arguments and values in the map functional to do a quick t test for each of three variables:
+
+```{r}
+## quick t test each dependent variable
+ttest_results <- map(.x = c("height_cm", "dry_biomass_g", "seed_mass_mg"),
+                     .f = quick_t_test,
+                     dat = plant_data, treatment = "treatment")
+
+## show results
+ttest_results
+```
+
+However, this list isn't super nice to look at. We could bind the rows into a data frame (with list_rbind or dplyr::bind_rows), or we could just made a data frame in the first place with map_dfr, which will always output a data frame (well, a tibble). Note that map_dfr is technically "superseded" because it requires the dplyr package to be installed, but it still works fine if you do.
+
+```{r}
+## quick t test each dependent variable
+ttest_df <- map_dfr(.x = c("height_cm", "dry_biomass_g", "seed_mass_mg"),
+                    .f = quick_t_test,
+                    dat = plant_data, treatment = "treatment")
+
+## show results
+ttest_df
+```
+
+Much nicer right? (just ignore those row names, we could remove them if we wanted). There are map functions that specifically output all sorts of data structures, like vectors of specific data types (e.g., map_chr for strings, map_int for integers). There is even a map functional that provides no output but iteratively performs a function: walk(). You could use walk when you want to iteratively draw plots or save files.
+
+One thing that is also helpful is that you can write a function withing a map functional, if you just need to do something over and over again but don't need to use the function elsewhere. So we could have done this:
+
+```{r}
+ttest_df2 <- map_dfr(.x = c("height_cm", "dry_biomass_g", "seed_mass_mg"),
+                     .f = function(x){
+                       ## do t test
+                       test_result <- t.test(plant_data[,measurement] ~ 
+                                             plant_data[,"Treatment"])
+                       ## pull out summary
+                       clean_result <- data.frame(mean_diff = diff(test_result$estimate),
+                                                  ci_lwr = test_result$conf.int[1],
+                                                  ci_upr = test_result$conf.int[2],
+                                                  p_val = test_result$p.value)
+                       ## return the clean_result as output from the function
+                       return(clean_result)
+                      })
+```
+
+### Iterating over Two Ranges with map2
+
+You can also iterate over two ranges of values with map2 functionals, or many with pmap functionals. Let's try it with our data by calculating the covariance between each pair of our dependent variables (there are likely other functions for this, but again, this is just a demo):
+
+```{r}
+
+## first let's find the pairs of our variables with combn
+var_coms <- combn(x = c("height_cm", "dry_biomass_g", "seed_mass_mg"), m = 2)
+var_coms
+
+## we can use the two rows as our iterating ranges
+
+## use map2_dbl to coerce to numeric vector
+var_covs <- map2_dbl(.x = var_coms[1,], .y = var_coms[2,],
+                     .f = function(x, y){ ## use a wrapper function to set the data frame
+                      cov(plant_data[,x], plant_data[y])
+                     })
+var_covs
+```
+
+Here we didn't just use "cov" because we wanted to pull the data from the plant_data data frame, so we used a "wrapper" function so that we could more precisely set the arguments of cov().
+
+### Nesting map Functionals
+
+You can also nest map functionals, much like you can nest for loops to loop through the jth part of the ith something or other.
+
+To demonstrate, let's say you had taken out 100 skulls of a certain species from a museum collection and measured the jaw lengths. Then for some vague reason you want to know how your estimate of mean jaw length would change if you had only measured a subset of them. Maybe this would be helpful in determining a good number of skulls to measure of other species to do an exploratory data analysis, assuming variances within species are roughly the same. I don't know if that makes sense, let's just go with it.
+
+In this example, there are two levels of iteration: different sizes of subsamples, and replicates of each subsample size. Thus we need to nest some functionals.
+
+First let's generate some fake skull data, and figure out how to subsample it:
+
+```{r}
+## make a vector of jaw_lengths
+jaw_lengths <- rnorm(n = 100, mean = 250, sd = 50)
+
+## save the true mean
+mean_jl <- mean(jaw_lengths)
+
+## try a subsample with the sample function
+subsample_mean_test <- mean(sample(x = jaw_lengths, size = 20, replace = FALSE))
+
+## check diff to true mean
+subsample_mean_test - mean_jl
+```
+
+So if that's what we need to do for one subsample, let's make it into a functional form so we can try different subsample sizes:
+
+```{r}
+## try different subsample sizes
+subsample_means <- map_dbl(.x = (1:9) * 10, ## iterate over 10 through 90 by ten
+                                .f = function(s){
+                                  ## calculate sample mean and difference to true mean
+                                  subsample_mean <- mean(sample(x = jaw_lengths, size = s,
+                                                                replace = FALSE))
+                                  return(subsample_mean)
+                                })
+
+## this gives us the means for subsamples of size 10, 20, 30, ...90
+subsample_means
+```
+
+However, this isn't very useful yet since we are only doing one random subsample per size! So we need to replicate by nesting another functional:
+
+```{r}
+## try different subsample sizes
+subsample_means <- map_dbl(.x = (1:9) * 10, ## iterate over 10 through 90 by ten
+                                .f = function(s){
+                                  ## calculate sample mean and difference to true mean
+                                  ## for 1000 replicates
+                                  subsample_means <- map_dbl(.x = 1:1000,
+                                                             .f = function(i){
+                                                             subsample_mean <-
+                                                               mean(sample(x = jaw_lengths, 
+                                                                         size = s,
+                                                                         replace = FALSE))
+                                                             return(subsample_mean)
+                                                         })
+                                  return(subsample_means)
+                                })
+
+map(1:n, \(i) x)⁠
+```

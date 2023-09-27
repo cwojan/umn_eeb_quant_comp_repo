@@ -1,3 +1,110 @@
 ---
 title: "Functions"
 ---
+
+So we just went over the contexts when you need to use loops, but what else can you do when looping isn't necessary (i.e., the process of one iteration *does not* depend on previous iterations)?
+
+You can write your own functions and use functionals to iterate them! We'll talk about functionals in the next section, but for now let's go over how to write functions and why.
+
+### How to Write Functions
+
+You are all familiar with functions in general, we've been using them all throughout this workshop! However, the ones we've been using are premade for us. Now, we will write our own.
+
+A function is made up of a couple of things: a name, one or more arguments, and body of code. You can make one with the following form:
+
+```{r}
+#| eval: false
+#| 
+new_function < function(some_argument, some_default = "default"){
+  output <- what_the_function_does(some_argument, default)
+  return(output)
+}
+
+```
+
+We start by providing our function name, "new_function", and we assign the output of the "function" function to that name as an object. (That sentence had a alot of "functions" in it...). Within the parentheses of the "function" function we can provide what arguments we want our new_function to have. We can set a default value for an argument by setting an argument = to some value or data structure. Finally, we provide what the function does in the brackets after the end parentheses. We can set what new_function's output will be with the return() statement.
+
+Now let's do a working example, using our fake plant data that we used with a for loop earlier. Here's the code to generate it again:
+
+```{r}
+## create a data frame with 60 total plants and
+## -two treatment levels, control and drought
+## -plant heights, masses, and seed masses sampling from a normal distribution
+plant_data <- data.frame(treatment = rep(c("control","drought"), each = 30),
+                         height_cm = rnorm(n = 60, mean = rep(c(12,8), each = 30), sd = 2),
+                         dry_biomass_g = rnorm(60, mean = rep(c(50, 40), each = 30), sd = 6),
+                         seed_mass_mg = rnorm(60, mean = rep(c(30, 20), each = 30), sd = 4))
+```
+
+Now let's create a function to do a t-test for a given dependent variable. But this time instead of creating a list of statistical output, let's make it output just a few numbers of interest: the effect size (mean difference in this case), the 95% confidence interval, and the p value.
+
+(this can be done with functions in the broom package, but it is a simple task that's good for demonstration purposes).
+
+Instead of jumping right into the function, I'm going to figure out how to pull out those values, and then make the function (for easier debugging)
+
+```{r}
+## let's imagine a function that takes three arguments: 
+## dat for the data frame, treatment for the categorical column,
+## and measurement for the dependent variable of interest
+## let's set them to play with:
+dat <- plant_data
+treatment <- "treatment"
+measurement <- "height_cm"
+
+## now let's put those into a t_test
+test_result <- t.test(dat[,measurement] ~ dat[,treatment])
+
+## we can pull out values with $, for example
+test_result$p.value
+
+## so make it a dataframe
+clean_result <- data.frame(mean_diff = diff(test_result$estimate),
+                           ci_lwr = test_result$conf.int[1],
+                           ci_upr = test_result$conf.int[2],
+                           p_val = test_result$p.value)
+clean_result
+
+```
+
+That looks like what we want! There is a inaccurate row name, but we can ignore that because it won't really affect anything. Now let's write it as a function!
+
+```{r}
+## let's name our function quick_t_test and give it our three arguments
+quick_t_test <- function(dat, treatment, measurement){
+  ## do t test
+  test_result <- t.test(dat[,measurement] ~ dat[,treatment])
+  ## pull out summary
+  clean_result <- data.frame(mean_diff = diff(test_result$estimate),
+                           ci_lwr = test_result$conf.int[1],
+                           ci_upr = test_result$conf.int[2],
+                           p_val = test_result$p.value)
+  ## return the clean_result as output from the function
+  return(clean_result)
+}
+```
+
+Note: the "return" command isn't strictly necessary here, because custom R functions will default to returning the last object created. However, I like to be explicit, especially when you create multiple object in a function.
+
+Now let's test out our function!
+
+```{r}
+## use quick t test on our fake data
+quick_t_test(dat = plant_data, treatment = "treatment", measurement = "height_cm")
+
+## try another variable
+quick_t_test(dat = plant_data, treatment = "treatment", measurement = "dry_biomass_g")
+```
+
+It works! In the next section, we will apply this function iteratively with functionals, and the true power of functions will be apparent.
+
+One more thing to note about functions is the distinction between local and global variables. Within the body of the function, any variable you create is local to the function, so only exists while the function is running. After it completes, you will only have access to whatever you've returned. Global variable are what exist outside of the function in your environment. You can refer to them inside a function, but it makes the function less versatile.
+
+### Benefits of Writing Functions
+
+Functions can be an efficient way to write your code for a variety of reasons. As mentioned before, some people prefer iterating functions with functionals for processing speed reasons, but I don't think that is as important for us, and in many cases there may not be a speed difference. Instead, I think writing functions is helpful because:
+
+1.  They can be easier to read. Looking back at code with a complicated nested for loop can be tough to parse, but code organized into functions can be easier to get a handle on.
+2.  They can be faster to write. I find myself getting things done quicker when I use functions - loops seemed to take longer to write and troubleshoot.
+3.  They can be transportable. Once you've written a generic function, you can copy and paste it into any old script where it would be useful, while it would be harder to do that with a loop.
+4.  They can make organizing large projects easier. Often people will create one script with all the functions for a certain analysis, and then other scripts where the analysis is run and output produced. This can be easier to keep track of and lead to shorter scripts to scroll through.
+5.  They can make your code modular. You can make your script a system of components that work together, functions can call other functions, and bugs are usually isolated to individual components.
