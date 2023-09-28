@@ -4,6 +4,8 @@ project:
 
 book:
   title: "UMN EEB Quant/Comp Repo"
+  repo-url: https://github.com/cwojan/umn_eeb_quant_comp_repo
+  downloads: [pdf]
   chapters:
     - index.qmd
     - part: "Iteration: Loops, Functions, and the purr package"
@@ -20,7 +22,9 @@ bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: flatly
+      dark: darkly
   pdf:
     documentclass: scrreprt
 

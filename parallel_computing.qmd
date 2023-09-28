@@ -1,3 +1,92 @@
 ---
 title: "Parallel Computing with map"
 ---
+
+If you want to go *really fast*, you can improve the performance of map functionals by using the parallel computing versions of them. Basically you can split the iterations you are doing among different R sessions or processing cores to shorten the total time to finish them all.
+
+To demonstrate, I want to first make a function that is slow to run. It takes a while to calculate the distance matrix of a set of coordinates, especially if there's a lot of them. So I will make a function that does just that (don't worry about what actually is being done here, just that it is slow):
+
+```{r}
+
+## load purrr library for later
+library(purrr)
+
+## set the only argument to be the size of the coordinate system, with a default of 1000
+## store output temporarily and then delete it to clear up memory
+long_function <- function(size = 1000){
+  temp <- dist(c(1:size, 1:size))
+  rm(temp)
+}
+
+## runs without errors (defaults to size = 1000)
+long_function()
+
+```
+
+Now let's try running this function multiple times with walk (which is a purrr functional that gives no output), and measure how much time it takes. There a fancy ways to do this with performance check packages, but a simple way is to check the time before running, and then after running, and checking the difference (you need to run the code all at once for this to work though).
+
+```{r}
+
+### run this block all at once
+## save start time
+start <- Sys.time()
+## iterate long function for 1000 iterations of the same size value
+walk(.x = rep(1000, 1000), .f = long_function)
+## save end time
+end <- Sys.time()
+## calculate runtime
+end - start
+###
+
+```
+
+The time difference varies on my machine, but for me it's usually around or above 5 seconds. Obviously that's not terribly long, but good for demonstration purposes. If we instead chunk those 500 iterations to be performed in prralel by separate R sessions, we should be able to divide that runtime by as many sessions as you have.
+
+For this we need the "furrr" package (hey it rhymes with purrr!), as well as it's dependency "future".
+
+```{r}
+#| eval: false
+
+install.packages("furrr")
+
+## if it doesn't install future automatically....
+install.packages("future")
+
+```
+
+Then we need to set the "plan" to use multiple R sessions. This is basically telling the alternative map functional that we will use in the next step how to evaluate its process, sequentially or in parallel with multiple sessions (or cores, or even machines).
+
+```{r}
+## load furrr
+library(furrr)
+
+## set plan to use 5 R sessions
+plan(multisession, workers = 5)
+```
+
+Now we can use "future_walk" to run the function for 1000 iterations in \~1/5th the time!
+
+```{r}
+
+
+### run this block all at once
+## save start time
+start <- Sys.time()
+## iterate long function for 1000 iterations of the same size value
+future_walk(.x = rep(1000, 1000), .f = long_function)
+## save end time
+end <- Sys.time()
+## calculate runtime
+end - start
+###
+```
+
+This usually runs in less than 2 seconds! Wheee! Obviously in this case, a \>50% reduction in time doesn't add up to much in seconds, but when your function takes hours, you can work much faster with furrr.
+
+This is a very surface level demo, but should be good enough to speed up some of your code. There is a lot of depth to this topic that I'm not equipped to speak on, so do look here for more info:
+
+<https://furrr.futureverse.org/index.html>
+
+And the plan function in particular is good to understand:
+
+<https://www.rdocumentation.org/packages/future/versions/1.33.0/topics/plan>

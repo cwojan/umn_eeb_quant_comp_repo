@@ -1,3 +1,53 @@
 ---
 title: "Vectorization"
 ---
+
+So the last thing I want to mention is the fastest way to iterate, and one that you have already done - vectorization. Many of R's base functions are written in C, which is much faster than R, so simple iterations can be done much faster. These functions are referred to as "vectorized", or you are basically performing vector math with them. Here is a simple example: let's find the 1 through 6th powers of 2:
+
+```{r}
+
+## we could write a loop
+for (i in 1:6){
+  print(i^2)
+}
+
+## or we could use a functional
+library(purrr)
+map_int(.x = 1:6, .f = function(x){2^x})
+
+## or we could simply use vector math; the "^" function is written in C, so...
+2^(1:6)
+```
+
+The third solution (which is the fastest) may have been obvious to you, but sometimes it's not so obvious.
+
+Consider simulating an animal that moves randomly around an infinite grid (or perhaps simulating Brownian motion of particles). If you wanted to track that animal/particles position at each of 100 timesteps, it seems like a for loop would be your best bet. The position of the animal at one time step depends in part on its position in the last time step, right? So let's show that:
+
+```{r}
+## create a matrix to keep track of positions
+animal_coords <- matrix(NA, nrow = 101, ncol = 2)
+## start our animal at the origin of the infinite grid
+animal_coords[1,] <- c(0,0)
+
+## move it 100 times
+for (i in 1:100){
+  animal_coords[i+1,1] <- animal_coords[i,1] + sample(x = c(1,0,-1), size = 1)
+  animal_coords[i+1,2] <- animal_coords[i,2] + sample(x = c(1,0,-1), size = 1)
+}
+```
+
+So that works, and it's plenty fast for a single run of 100 timesteps, but increase the timesteps and simulate over some parameter space and it gets lengthy. Luckily, base R has a helpful vectorized function for this: cumsum. It calculates the cumulative sum of a vector at each index. So we can also write our random walk like this:
+
+```{r}
+
+## cumulatively sum random movements for the x and y coordinate
+x_coords <- cumsum(c(0, sample(c(1,0,-1), size = 100, replace = TRUE)))
+y_coords <- cumsum(c(0, sample(c(1,0,-1), size = 100, replace = TRUE)))
+
+## bind those coords
+new_animal_coords <- cbind(x_coords, y_coords)
+```
+
+(Note: for random walks across higher dimension arrays, writing a function and iterating over each axis would be advisable).
+
+That method would save you a lot of time if you were running tons of simulations! Basically, we are outsourcing our for loop to C with the cumsum function. When you can, outsource iterations to C! (Although it may take some time digging around base R functions to find what you need).

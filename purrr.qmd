@@ -1,5 +1,5 @@
 ---
-title: "Functionals with purr"
+title: "Functionals with purrr"
 ---
 
 Now that we've written a function, let's use it efficiently with functionals. Functionals are functions that take other functions as one of their arguments, and then can apply that function a number of times or to a range of values (much like a loop!). Base R has the "apply" family of functionals, including lapply and sapply, but I've found those difficult to learn because they have inconsistent syntax and behavior. Instead, we will use the "map" functionals from the "purrr" package. It's part of the tidyverse, so you likely already have it installed. If not, use this code:
@@ -78,8 +78,8 @@ One thing that is also helpful is that you can write a function withing a map fu
 ttest_df2 <- map_dfr(.x = c("height_cm", "dry_biomass_g", "seed_mass_mg"),
                      .f = function(x){
                        ## do t test
-                       test_result <- t.test(plant_data[,measurement] ~ 
-                                             plant_data[,"Treatment"])
+                       test_result <- t.test(plant_data[,x] ~ 
+                                             plant_data[,"treatment"])
                        ## pull out summary
                        clean_result <- data.frame(mean_diff = diff(test_result$estimate),
                                                   ci_lwr = test_result$conf.int[1],
@@ -123,3 +123,15 @@ plant_covs
 ```
 
 We could have also plugged the map functional right into our data.frame construction. If you are familiar with dplyr and use mutate, you can mutate new columns using map as well!
+
+### Concluding Remarks (that sounds too formal...)
+
+Since the above demonstrations are relatively simple, you may be skeptical of the advantages of writing custom functions to iterate with functionals like map. And if you prefer to use loops, just use loops! You can do a lot of cool stuff with for loops. However, I think it's always nice to add more techniques to your "coding toolbox," as you can solve more problems.
+
+Particularly, as your code gets more complex and interconnected, and your project gets larger, functions and functionals can really come in handy for keeping things organized. For example, I have a simulation project where I have a function to generate simulated landscapes, functions to look at those landscapes, a function to simulate animal movement over those landscapes, and a function that applies parasitic interactions with those animals (the animal movement function is called within this function). This way I can pinpoint where bugs might be easily and transfer my landscape generation or movement functions to other projects. Perhaps most importantly, I can use map to try generating landscapes and simulating movement under a range of different parameters. This general organizational concept could be applied to more analytical projects where you are aalyzing and plotting different datasets in different ways.
+
+In the end, you have the most important opinion on how you code, so try using functionals and see how they can be best integrated into your coding!
+
+If you'd like to learn more than this shallow introduction, check this link out:
+
+<https://purrr.tidyverse.org/>
