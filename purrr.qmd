@@ -66,13 +66,16 @@ ttest_df <- map_dfr(.x = c("height_cm", "dry_biomass_g", "seed_mass_mg"),
                     .f = quick_t_test,
                     dat = plant_data, treatment = "treatment")
 
+## add a label column
+ttest_df$dep_var <- c("height_cm", "dry_biomass_g", "seed_mass_mg")
+
 ## show results
 ttest_df
 ```
 
 Much nicer right? (just ignore those row names, we could remove them if we wanted). There are map functions that specifically output all sorts of data structures, like vectors of specific data types (e.g., map_chr for strings, map_int for integers). There is even a map functional that provides no output but iteratively performs a function: walk(). You could use walk when you want to iteratively draw plots or save files.
 
-One thing that is also helpful is that you can write a function withing a map functional, if you just need to do something over and over again but don't need to use the function elsewhere. So we could have done this:
+One thing that is also helpful is that you can write a function within a map functional, if you just need to do something over and over again but don't need to use the function elsewhere. So we could have done this:
 
 ```{r}
 ttest_df2 <- map_dfr(.x = c("height_cm", "dry_biomass_g", "seed_mass_mg"),
@@ -88,6 +91,16 @@ ttest_df2 <- map_dfr(.x = c("height_cm", "dry_biomass_g", "seed_mass_mg"),
                        ## return the clean_result as output from the function
                        return(clean_result)
                       })
+```
+
+We could have also done this with our pre-made function to deal with the arguments more explicitly:
+
+```{r}
+ttest_df3 <- map_dfr(.x = c("height_cm", "dry_biomass_g", "seed_mass_mg"),
+                     .f = function(x){
+                       quick_t_test(dat = plant_data, treatment = "treatment",
+                                    measurement = x)
+                     })
 ```
 
 ### Iterating over Two Ranges with map2

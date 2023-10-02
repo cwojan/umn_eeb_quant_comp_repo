@@ -300,13 +300,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     Welch Two Sample t-test
 
 data:  plant_data[, i] by plant_data[, "treatment"]
-t = 6.3205, df = 53.614, p-value = 5.339e-08
+t = 8.1758, df = 53.676, p-value = 5.362e-11
 alternative hypothesis: true difference in means between group control and group drought is not equal to 0
 95 percent confidence interval:
- 2.341790 4.518115
+ 3.372450 5.564199
 sample estimates:
 mean in group control mean in group drought 
-            11.786786              8.356833 
+             11.85127               7.38295 
 
 
 $dry_biomass_g
@@ -314,13 +314,13 @@ $dry_biomass_g
     Welch Two Sample t-test
 
 data:  plant_data[, i] by plant_data[, "treatment"]
-t = 7.0993, df = 54.422, p-value = 2.733e-09
+t = 7.0273, df = 55.656, p-value = 3.213e-09
 alternative hypothesis: true difference in means between group control and group drought is not equal to 0
 95 percent confidence interval:
-  6.755264 12.070890
+  7.074833 12.717786
 sample estimates:
 mean in group control mean in group drought 
-             50.83554              41.42246 
+             49.67701              39.78070 
 
 
 $seed_mass_mg
@@ -328,13 +328,13 @@ $seed_mass_mg
     Welch Two Sample t-test
 
 data:  plant_data[, i] by plant_data[, "treatment"]
-t = 11.788, df = 57.212, p-value &lt; 2.2e-16
+t = 6.9582, df = 55.63, p-value = 4.186e-09
 alternative hypothesis: true difference in means between group control and group drought is not equal to 0
 95 percent confidence interval:
-  9.772532 13.771906
+  6.413408 11.600219
 sample estimates:
 mean in group control mean in group drought 
-             30.85710              19.08488 </code></pre>
+             28.72655              19.71974 </code></pre>
 </div>
 </div>
 <p>When you are writing a for loop (especially ones more complex than the above), it can be helpful to first develop the code within the loop to more easily debug it. For example:</p>
@@ -350,13 +350,13 @@ mean in group control mean in group drought
     Welch Two Sample t-test
 
 data:  plant_data[, i] by plant_data[, "treatment"]
-t = 6.3205, df = 53.614, p-value = 5.339e-08
+t = 8.1758, df = 53.676, p-value = 5.362e-11
 alternative hypothesis: true difference in means between group control and group drought is not equal to 0
 95 percent confidence interval:
- 2.341790 4.518115
+ 3.372450 5.564199
 sample estimates:
 mean in group control mean in group drought 
-            11.786786              8.356833 </code></pre>
+             11.85127               7.38295 </code></pre>
 </div>
 </div>
 <p>This can be helpful because R, like most programming languages, is very particular about syntax. If you had tried to use the $ operator to select columns, you would have gotten an error:</p>

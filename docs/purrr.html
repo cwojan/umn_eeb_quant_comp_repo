@@ -270,19 +270,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>map_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1] -0.3792941
+[1] -1.186083
 
 [[2]]
-[1] -0.05003484 -0.34604296
+[1] 0.68112659 0.07705783
 
 [[3]]
-[1]  1.4456541 -0.8184218  0.2982851
+[1] -0.9848596  1.3251867 -1.1851522
 
 [[4]]
-[1]  0.2120991 -0.9364113 -0.7795585 -0.2158808
+[1] -1.1662050  0.1266697  0.6391741 -1.2327996
 
 [[5]]
-[1]  0.9620472  0.7956544 -0.4623511  0.3488813 -1.3421138</code></pre>
+[1]  0.0315012  1.7378872 -1.3268080  1.2669670  0.8647803</code></pre>
 </div>
 </div>
 <p>One thing that is implicitly going on here is that 1:5 is being plugged into the first argument of rnorm by default, which is the number of observations to generate. The mean and sd default to 0 and 1 respectively (as indicated in the help doc for rnorm). However, our function has three arguments with no defaults, so we will need to supply those arguments and values in the map functional to do a quick t test for each of three variables:</p>
@@ -296,16 +296,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>ttest_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-                      mean_diff   ci_lwr   ci_upr        p_val
-mean in group drought -4.245301 3.059107 5.431496 1.683137e-09
+                      mean_diff  ci_lwr   ci_upr        p_val
+mean in group drought -3.548899 2.46153 4.636268 1.925335e-08
 
 [[2]]
-                      mean_diff   ci_lwr   ci_upr        p_val
-mean in group drought -9.071756 5.592005 12.55151 2.664831e-06
+                      mean_diff  ci_lwr  ci_upr        p_val
+mean in group drought -10.09096 6.43331 13.7486 8.889982e-07
 
 [[3]]
-                      mean_diff   ci_lwr   ci_upr        p_val
-mean in group drought -11.57936 9.621373 13.53734 4.732468e-17</code></pre>
+                      mean_diff   ci_lwr   ci_upr       p_val
+mean in group drought -11.90167 9.791362 14.01198 2.87839e-16</code></pre>
 </div>
 </div>
 <p>However, this list isn’t super nice to look at. We could bind the rows into a data frame (with list_rbind or dplyr::bind_rows), or we could just made a data frame in the first place with map_dfr, which will always output a data frame (well, a tibble). Note that map_dfr is technically “superseded” because it requires the dplyr package to be installed, but it still works fine if you do.</p>
@@ -315,17 +315,24 @@ mean in group drought -11.57936 9.621373 13.53734 4.732468e-17</code></pre>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.f =</span> quick_t_test,</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">dat =</span> plant_data, <span class="at">treatment =</span> <span class="st">"treatment"</span>)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="do">## show results</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ttest_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="do">## add a label column</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ttest_df<span class="sc">$</span>dep_var <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="do">## show results</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>ttest_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                           mean_diff   ci_lwr    ci_upr        p_val
-mean in group drought...1  -4.245301 3.059107  5.431496 1.683137e-09
-mean in group drought...2  -9.071756 5.592005 12.551508 2.664831e-06
-mean in group drought...3 -11.579357 9.621373 13.537341 4.732468e-17</code></pre>
+mean in group drought...1  -3.548899 2.461530  4.636268 1.925335e-08
+mean in group drought...2 -10.090956 6.433310 13.748602 8.889982e-07
+mean in group drought...3 -11.901672 9.791362 14.011982 2.878390e-16
+                                dep_var
+mean in group drought...1     height_cm
+mean in group drought...2 dry_biomass_g
+mean in group drought...3  seed_mass_mg</code></pre>
 </div>
 </div>
 <p>Much nicer right? (just ignore those row names, we could remove them if we wanted). There are map functions that specifically output all sorts of data structures, like vectors of specific data types (e.g., map_chr for strings, map_int for integers). There is even a map functional that provides no output but iteratively performs a function: walk(). You could use walk when you want to iteratively draw plots or save files.</p>
-<p>One thing that is also helpful is that you can write a function withing a map functional, if you just need to do something over and over again but don’t need to use the function elsewhere. So we could have done this:</p>
+<p>One thing that is also helpful is that you can write a function within a map functional, if you just need to do something over and over again but don’t need to use the function elsewhere. So we could have done this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ttest_df2 <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>),</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.f =</span> <span class="cf">function</span>(x){</span>
@@ -341,44 +348,52 @@ mean in group drought...3 -11.579357 9.621373 13.537341 4.732468e-17</code></pre
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">return</span>(clean_result)</span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                      })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>We could have also done this with our pre-made function to deal with the arguments more explicitly:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ttest_df3 <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>),</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.f =</span> <span class="cf">function</span>(x){</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">quick_t_test</span>(<span class="at">dat =</span> plant_data, <span class="at">treatment =</span> <span class="st">"treatment"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">measurement =</span> x)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                     })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="iterating-over-two-ranges-with-map2" class="level3" data-number="5.0.2">
 <h3 data-number="5.0.2" class="anchored" data-anchor-id="iterating-over-two-ranges-with-map2"><span class="header-section-number">5.0.2</span> Iterating over Two Ranges with map2</h3>
 <p>You can also iterate over two ranges of values with map2 functionals, or many with pmap functionals. Let’s try it with our data by calculating the covariance between each pair of our dependent variables (there are likely other functions for this, but again, this is just a demo):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## first let's find the pairs of our variables with combn</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>var_coms <span class="ot">&lt;-</span> <span class="fu">combn</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>), <span class="at">m =</span> <span class="dv">2</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>var_coms</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## first let's find the pairs of our variables with combn</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>var_coms <span class="ot">&lt;-</span> <span class="fu">combn</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>), <span class="at">m =</span> <span class="dv">2</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>var_coms</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1]            [,2]           [,3]           
 [1,] "height_cm"     "height_cm"    "dry_biomass_g"
 [2,] "dry_biomass_g" "seed_mass_mg" "seed_mass_mg" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">## we can use the two rows as our iterating ranges</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="do">## use map2_dbl to coerce to numeric vector</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>var_covs <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>(<span class="at">.x =</span> var_coms[<span class="dv">1</span>,], <span class="at">.y =</span> var_coms[<span class="dv">2</span>,],</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.f =</span> <span class="cf">function</span>(x, y){ <span class="do">## use a wrapper function to set the data frame</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">cov</span>(plant_data[,x], plant_data[y])</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                     })</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>var_covs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## we can use the two rows as our iterating ranges</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="do">## use map2_dbl to coerce to numeric vector</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>var_covs <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>(<span class="at">.x =</span> var_coms[<span class="dv">1</span>,], <span class="at">.y =</span> var_coms[<span class="dv">2</span>,],</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.f =</span> <span class="cf">function</span>(x, y){ <span class="do">## use a wrapper function to set the data frame</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">cov</span>(plant_data[,x], plant_data[y])</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                     })</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>var_covs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 11.08664 13.40739 25.47608</code></pre>
+<pre><code>[1]  6.923942 10.570392 34.601778</code></pre>
 </div>
 </div>
 <p>Here we didn’t just use “cov” because we wanted to pull the data from the plant_data data frame, so we used a “wrapper” function so that we could more precisely set the arguments of cov().</p>
 <p>We can put all of our info together like so:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plant_covs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">var1 =</span> var_coms[<span class="dv">1</span>,],</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">var2 =</span> var_coms[<span class="dv">2</span>,],</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">cov =</span> var_covs)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plant_covs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plant_covs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">var1 =</span> var_coms[<span class="dv">1</span>,],</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">var2 =</span> var_coms[<span class="dv">2</span>,],</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">cov =</span> var_covs)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>plant_covs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           var1          var2      cov
-1     height_cm dry_biomass_g 11.08664
-2     height_cm  seed_mass_mg 13.40739
-3 dry_biomass_g  seed_mass_mg 25.47608</code></pre>
+<pre><code>           var1          var2       cov
+1     height_cm dry_biomass_g  6.923942
+2     height_cm  seed_mass_mg 10.570392
+3 dry_biomass_g  seed_mass_mg 34.601778</code></pre>
 </div>
 </div>
 <p>We could have also plugged the map functional right into our data.frame construction. If you are familiar with dplyr and use mutate, you can mutate new columns using map as well!</p>

@@ -3,3 +3,5 @@
 This site/book will serve as a repository for resources related to computational and quantitative workshops held for the University of Minnesota's Ecology, Evolution, and Behavior Graduate Program through its "Friday Noon Seminar" series.
 
 It is a "living document," and thus will be subject to change and be updated over time.
+
+Contact: Chris Wojan, wojan002 (at umn.edu)

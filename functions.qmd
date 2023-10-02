@@ -15,7 +15,7 @@ A function is made up of a couple of things: a name, one or more arguments, and 
 ```{r}
 #| eval: false
 #| 
-new_function < function(some_argument, some_default = "default"){
+new_function <- function(some_argument, some_default = "default"){
   output <- what_the_function_does(some_argument, default)
   return(output)
 }
