@@ -1,0 +1,48 @@
+---
+title: "git_github"
+format: html
+---
+
+## Introduction
+
+This page aims to get people started with using version control in their coding and data analysis with R, specifically using git (a computer application) and GitHub (a website).
+
+By far the most useful resource for this aim is the following webpage from statistician Jenny Bryan:
+
+[Happy Git With R](https://happygitwithr.com/)
+
+On this page, is a shorter summary of some of the key points based on specifically how I (Chris Wojan) work with git and GitHub.
+
+### Why?
+
+When writing code, three things can be helpful:
+
+1.  Backing up your scripts
+2.  Sharing your code easily
+3.  Looking at previous versions of code in case something breaks
+
+Using git allows you to save iterative versions of your code (and thus monitor your successive edits). Using GitHub allows you to back up your scripts online, and share your code easily with collaborators without attaching misc. files to emails.
+
+## Version Control with git
+
+Our first step is to get git installed locally on our computers. Since git is designed primarily for computer programming applications, its installation is a bit different than many applications, and the steps vary among operating systems.
+
+Note: if you think git might already be installed on your computer, you can check by opening the Terminal in RStudio (Tools -\> Terminal) or through your OS (e.g. MacOS' Terminal application), and then entering the command:
+
+```{bash}
+which git
+```
+
+If you use MacOS (like me), it's fairly straightforward, but there are a few ways to do it.
+
+I personally have installed [Homebrew](https://brew.sh/), which is a tool that allows you to install useful applications and code packages. You can install Homebrew with the traditional Mac .pkg installation process from their [GitHub Repository](https://github.com/Homebrew/brew/releases/tag/4.4.19). Alternatively, you can open the Terminal application on your Mac and input the following command:
+
+```{bash}
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+With Homebrew installed, you can
+
+## GitHub
+
+## Connecting in RStudio

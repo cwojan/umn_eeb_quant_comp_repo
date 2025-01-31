@@ -17,6 +17,12 @@ book:
         - purrr.qmd
         - parallel_computing.qmd
         - vectorization.qmd
+    - part: "git, GitHub, Building Websites, and Copilot"
+      chapters:
+        - git_github.qmd
+        - organizing_repositories.qmd
+        - building_websites.qmd
+        - copilot.qmd
 
 bibliography: references.bib
 
