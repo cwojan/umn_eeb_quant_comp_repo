@@ -1,5 +1,5 @@
 ---
-title: "git_github"
+title: "Git and GitHub"
 format: html
 ---
 
@@ -11,7 +11,7 @@ By far the most useful resource for this aim is the following webpage from stati
 
 [Happy Git With R](https://happygitwithr.com/)
 
-On this page, is a shorter summary of some of the key points based on specifically how I (Chris Wojan) work with git and GitHub.
+On this page is a shorter summary of some of the key points based on specifically how I (Chris Wojan) work with git and GitHub.
 
 ### Why?
 
@@ -171,3 +171,7 @@ With your changes staged, click the Commit button in the git tab, and you'll see
 Now you can "push" these changes to your GitHub repository. Remember, commits are local to wherever you are, but can be pushed or pulled elsewhere. You can push your commits from your computer to GitHub, and you can pull commits made elsewhere from GitHub to your computer.
 
 In the git tab, there are "Push" and "Pull" buttons. If you are ever working collaboratively, it can be good practice to pull before you push everytime. If you are just backing up and sharing your own code, you can just push from RStudio to GitHub when needed. Click "Push" to send your commit to GitHub.
+
+If you refresh the repository's page on GitHub, you should see the files you made or edited in RStudio there. Woohoo!
+
+You can also make edits to things on GitHub and then "Pull" them to Rstudio in the git tab, but that isn't a common thing to do at least in my experience. Pulling will mostly be relevant if you are working on a git repo with others or by yourself on multiple computers.

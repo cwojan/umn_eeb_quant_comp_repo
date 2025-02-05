@@ -1,3 +1,96 @@
 ---
-title: "organizing_repositories"
+title: "Organizing Repositories"
+format: html
 ---
+
+## Introduction
+
+In the previous section, we went over getting git installed and connecting with GitHub. As we did that, we introduced the idea of git repositories. Here, we will go into a bit more detail about them.
+
+Repositories can be thought of as a collection of related files, much like a folder or directory on your computer (with or without subfolders). As we have discussed, with git we can save versions of this collection of files at different time points. This is like the the version history on a Google Doc, but beyond the scope of one document to a whole collection of files.
+
+Repositories can take many forms (this website you are reading is one!). In Ecology, Evolution, and Behavior, they are often R Projects, or projects based in Python or MatLAB, or perhaps other languages, or a mixture.
+
+While a git repository at its most basic is simply a local folder, it makes most sense in our context to talk about them as a shared entity between your local computer and the GitHub website.
+
+## Repository Structure
+
+On this page, we'll talk about the structure of a repository as an R Project built with RStudio.
+
+If you are unfamiliar with R Projects in general, they are a useful way to organize code and data related to a given research project. At the very least, one consists of a .Rproj file with the project name inside of a folder on your computer named the same thing. In the folder with the .Rproj file, you can create subfolders, R scripts, and other relevant files.
+
+One of the great thing about an R Project is its directory detection - when you have an R Project open, the working directory that it will read files from and write files to is the same as the folder that the .Rproj file is in. IF you want to read or write to a subfolder, you can simply add "/subfolder_name/" to your read or write function's name or directory argument.
+
+On your computer, a research project's repository might often look something like this:
+
+-   project_name
+
+    -   project_name.Rproj
+
+    -   /code
+
+        -   script.R
+
+        -   other_script.R
+
+    -   /data
+
+        -   data.csv
+
+    -   /figures
+
+        -   figure1.tiff
+
+        -   figure2.tiff
+
+    -   README.md
+
+    -   .gitignore
+
+In such a repo, the scripts would likely read data from the "/data" folder, and write figures to the "/figures" folder.
+
+Your project might also feature a .Rhistory file that logs the R code that you run into a text file.
+
+There are two other important files here, the first is the .gitignore file which we will go into now, and the readme file which we'll talk about afterwards.
+
+## .gitignore
+
+Now you may have noticed that I referred to the above R Project / Repository as *on your computer*. This is because the files in a project on your computer will generally be more inclusive than those on GitHub. GitHub is not meant as a data storage solution, so it is best to limit what is stored on GitHub to only text files - i.e. scripts of code or markdown files.
+
+This asymmetry is where the .gitignore file comes in. It is a simple text file the lists the files and folders in your local repository that you don't want to "push" to GitHub. This file is read by git, which ignores those files for commits and pushes in the git tab of RStudio (or elsewhere, like in the Terminal).
+
+You can edit the .gitignore file in RStudio by opening it through the Files tab in the lower right pane. It will likely have some things already listed if you set a template .gitignore when creating your repo, or from when you created the R project itself. These include:
+
+-   .Rproj.user
+
+-   .Rhistory
+
+-   .RData
+
+-   .Ruserdata
+
+You can add files and folders to this document on new lines. I general recommend that you add any subfolders of data or figures, although there may be some small output .csv files that you may want on GitHub in certain situations.
+
+Note: MacOS will create a .DS_Store file to your project/repo if you open it in Finder, so you may as well add ".DS_Store" to your .gitignore file.
+
+Here is an example repository for a manuscript I have in review:
+
+<https://github.com/cwojan/spatially_aggregated_parasite>
+
+On the repo page, you can see there is an .Rproj file, a set of .qmd files (these are Quarto Markdown files, which is an alternative way to write R code with more documentation), and a .R script. There is also a README.md, a .gitignore, and an /old_misc_files folder.
+
+You can click the .gitignore file and see that I have ignored three folders: /data, /sim_output, and /figures.
+
+/data and /sim_ouput contain .rds files and .csv files featuring simulation data, and some of them are rather large. /figures includes figures in high quality tiff format, so these are also large files. These folders are of course located on my computer in my R Project folder.
+
+You can of course backup these types of folders that you are not sending to GitHub using Google Drive or what have you, but note that if you backup a git repo on Google Drive, your "Recent Files" tab will be filled with weirdly named config files when you do a lot of commits.
+
+## Readme files
+
+The other important file that often goes along with repositories is the Readme file. This is where you can decide how to describe the project to anyone who might need to know about it, including what your aim is, what certain scripts do, etc.
+
+In the example repo above, I provide a broad overview of what the researrch project is, and how someone would go about recreating my simulations with the code provided.
+
+I then used GitHub Copilot to generate a more detailed description, which I'm not sure on the usefulness of.
+
+In any case, a Readme file is always a good idea for repositories that are going to be shared with collaborators or are part of a manuscript publication.
