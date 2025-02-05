@@ -166,4 +166,8 @@ With the new project opened, you can edit the Readme.md file, or create a new .R
 
 You should notice that in the upper right pane of RStudio, there is a git tab. There, any new saved change you have made should show up. You can click the check box under "Staged" to add these changes to a potential "commit". A commit is a locally stored snapshot of a repository that you can create whenever you choose to.
 
-With your changes staged, click the Commit button in the git tab,
+With your changes staged, click the Commit button in the git tab, and you'll see a dialog box where you can add a message for the commit, summarizing what changes have been made. You can also track what changes you've done. Then you can click commit and close the window.
+
+Now you can "push" these changes to your GitHub repository. Remember, commits are local to wherever you are, but can be pushed or pulled elsewhere. You can push your commits from your computer to GitHub, and you can pull commits made elsewhere from GitHub to your computer.
+
+In the git tab, there are "Push" and "Pull" buttons. If you are ever working collaboratively, it can be good practice to pull before you push everytime. If you are just backing up and sharing your own code, you can just push from RStudio to GitHub when needed. Click "Push" to send your commit to GitHub.
