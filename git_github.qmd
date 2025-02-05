@@ -27,22 +27,143 @@ Using git allows you to save iterative versions of your code (and thus monitor y
 
 Our first step is to get git installed locally on our computers. Since git is designed primarily for computer programming applications, its installation is a bit different than many applications, and the steps vary among operating systems.
 
+### MacOS
+
+If you use MacOS (like me), installing git is fairly straightforward, but there are a few ways to do it.
+
 Note: if you think git might already be installed on your computer, you can check by opening the Terminal in RStudio (Tools -\> Terminal) or through your OS (e.g. MacOS' Terminal application), and then entering the command:
 
-```{bash}
+``` bash
 which git
 ```
 
-If you use MacOS (like me), it's fairly straightforward, but there are a few ways to do it.
-
 I personally have installed [Homebrew](https://brew.sh/), which is a tool that allows you to install useful applications and code packages. You can install Homebrew with the traditional Mac .pkg installation process from their [GitHub Repository](https://github.com/Homebrew/brew/releases/tag/4.4.19). Alternatively, you can open the Terminal application on your Mac and input the following command:
 
-```{bash}
+``` bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-With Homebrew installed, you can
+With Homebrew installed, you can simply open the MacOS Terminal application or Terminal in RStudio (Tools -\> Terminal) and input the following command:
+
+``` bash
+brew install git
+```
+
+Alternatively, Apple features git in its "xcode" set of command line tools, you can install these (including git) with this command in your Terminal:
+
+``` bash
+xcode-select --install
+```
+
+### Windows
+
+I am personally less adept with git on Windows, but you should be able to download git through a typical installer from these pages:
+
+[Git For Windows](https://gitforwindows.org/)
+
+or
+
+[Windows git Download](https://git-scm.com/downloads/win)
+
+Both of those should come with a git Bash Shell, where you can input command line git actions if needed. Windows doesn't have a simple shell/terminal situation like MacOS does unfortunately. However, you should be able to check if you have git installed in Command Prompt, VirtualShell, or something else (?) with
+
+``` bash
+which git
+```
+
+### Linux
+
+If you are using Linux, you know more than me.
 
 ## GitHub
 
+While git can be used locally for version control, it is arguably most effective when used in conjunction with an online repository. GitHub is the most popular and well-documented.
+
+You can register an account for free here:
+
+<https://github.com>
+
+The aforementioned Jenny Bryan recommends choosing a simple username that features your name somehow, and I do too as you'll likely be using this account in conjunction with your scientific publications.
+
+Also, as a University of Minnesota student, you can get access to Github Education through this page:
+
+[GitHub Education](https://github.com/education)
+
+This comes with a variety of features, but the only one I've used is Copilot, which we'll go over in a later page.
+
+With a GitHub account, you can make an unlimited number of "repositories", which are basically folders hierarchies for code (in truth, this is based on how git works without GitHub). These repositories can be private or public, and you can switch visibility after you've made one (e.g., making a repo public when submitting a manuscript). R Projects in RStudio are designed to match and work as git repositories.
+
 ## Connecting in RStudio
+
+Now you should have git installed on your computer, and GitHub account where you can back up and share your code. While you can use git in the Terminal/Shell to send files to GitHub, it is easier for beginners (and me) to use RStudio to connect things.
+
+### Configuring
+
+There are also some handy R packages to make things easy that we can use. The first is "[usethis](https://usethis.r-lib.org/)", which has various utilities for managing coding projects in R.
+
+``` R
+install.packages("usethis")
+```
+
+One nifty function is the ability to configure your git installation through R, i.e. setting your name and GitHub account-related email:
+
+``` R
+library(usethis)
+use_git_config(user.name = "Jane Doe", user.email = "jane@example.org")
+```
+
+I believe this is a necessary step to get things working, but I'm not absolutely positive. It's easy enough though!
+
+Next, there is the very useful "[gitcreds](https://gitcreds.r-lib.org/index.html)" package (this one will likely get periodic use, as you will see).
+
+``` R
+install.packages("gitcreds")
+```
+
+This will take us to how we can "log in" to GitHub through RStudio. To do this, we will need a Personal Access Token or PAT to authorize RStudio to do git actions. You can do this through usethis, but I think it is more intuitive to do it on the GitHub website.
+
+To do so, when logged in on GitHub, click your profile picture in the upper right (probably a weird collection of pixels), and scroll down to Settings. Once there, scroll down to "Developer Settings" on the left sidebar. Click that and then Personal Access Tokens again on the left sidebar, and "Tokens (classic)" in the dropdown. There, you can click Generate New Token (again choose "classic").
+
+When generating a new token, you'll be given a bevy of options, the first of which is a note. I usually just call it the month and the year.
+
+Then you set how long until it expires. You can set it to never expire, which GitHub does not recommend, but I just go with 90 days myself (after which you will just repeat the process we are doing now).
+
+You will also set the scope of the token. For our purposes click the header checkboxes for repo, workflow, and user.
+
+Then click generate token, and you'll be given a long sequence of characters that you should copy to your clipboard, as you won't be seeing it again. If you close the window or something beforehand, you can just generate a new token though.
+
+Now, with PAT copied, we can run the following code in R:
+
+``` R
+gitcreds::gitcreds_set()
+```
+
+It will then prompt you to set or replace your credentials. You can use your GitHub username, and the PAT you generated as the password.
+
+Now you should be able to communicate from RStudio to GitHub!
+
+### Creating a Repo
+
+To test out our connection, let's make a repository! The simplest way, and the way I usually do this is by making a repository on GitHub first.
+
+To do so, be logged in to GitHub and click the green "New" button near repositories on the left of your dashboard page.
+
+The page it takes you to will have a few options. The most important is the repository name. For this purpose it doesn't really matter, as you can delete this repository after testing.
+
+You can also set if it is private or public, add a readme, select a gitignore template (more on this later), and set the license, but you don't need to bother with those for now.
+
+When you hit create, you'll be taken to a new repo page. If you did not create a Readme, it will just be a setup page where you can copy the HTTPS link easily (which you should do!).
+
+Alternatively, with a readme file, you'll have a more traditional repo page, where you can click the green "Code" button to copy the HTTPS link to the repo.
+
+In either case, the link should look like "https://github.com/your-username/your-repo.git".
+
+With this copied, head to RStudio, and click File \> New Project, or New Project from the project tab in the upper right.
+
+In the dialog box that pops up, select "Version Control" then "git", and paste in your repository link in the "Repository URL" field. Take note of the directory where this project is being saved.
+
+With the new project opened, you can edit the Readme.md file, or create a new .R file, and save these change locally in RStudio. Do something like this.
+
+You should notice that in the upper right pane of RStudio, there is a git tab. There, any new saved change you have made should show up. You can click the check box under "Staged" to add these changes to a potential "commit". A commit is a locally stored snapshot of a repository that you can create whenever you choose to.
+
+With your changes staged, click the Commit button in the git tab,
