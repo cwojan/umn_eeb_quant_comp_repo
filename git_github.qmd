@@ -1,6 +1,5 @@
 ---
 title: "Git and GitHub"
-format: html
 ---
 
 ## Introduction
@@ -85,6 +84,8 @@ You can register an account for free here:
 
 The aforementioned Jenny Bryan recommends choosing a simple username that features your name somehow, and I do too as you'll likely be using this account in conjunction with your scientific publications.
 
+In addition, the username you choose will be the prefix of your personal website if you choose to make one with GitHub.
+
 Also, as a University of Minnesota student, you can get access to Github Education through this page:
 
 [GitHub Education](https://github.com/education)
@@ -101,13 +102,13 @@ Now you should have git installed on your computer, and GitHub account where you
 
 There are also some handy R packages to make things easy that we can use. The first is "[usethis](https://usethis.r-lib.org/)", which has various utilities for managing coding projects in R.
 
-``` R
+``` r
 install.packages("usethis")
 ```
 
 One nifty function is the ability to configure your git installation through R, i.e. setting your name and GitHub account-related email:
 
-``` R
+``` r
 library(usethis)
 use_git_config(user.name = "Jane Doe", user.email = "jane@example.org")
 ```
@@ -116,7 +117,7 @@ I believe this is a necessary step to get things working, but I'm not absolutely
 
 Next, there is the very useful "[gitcreds](https://gitcreds.r-lib.org/index.html)" package (this one will likely get periodic use, as you will see).
 
-``` R
+``` r
 install.packages("gitcreds")
 ```
 
@@ -134,7 +135,7 @@ Then click generate token, and you'll be given a long sequence of characters tha
 
 Now, with PAT copied, we can run the following code in R:
 
-``` R
+``` r
 gitcreds::gitcreds_set()
 ```
 

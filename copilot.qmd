@@ -1,3 +1,72 @@
 ---
-title: "copilot"
+title: "GitHub Copilot"
 ---
+
+## Introduction
+
+When we went over signing up for a GitHub account, I mentioned how you can get access to GitHub Education by verifying your student status at UMN. There are many features to GitHub Education, most of which I have not used. The one I have used, and found somewhat useful, is GitHub Copilot. Copilot is a Large Language Model (commonly referred to as AI) built on the GPT framework specifically fine-tuned for computer programming. You can use it to answer coding questions specific to your GitHub repositories, as well as interactively while you are coding to solve problems.
+
+Of course, there are ethical concerns to AI usage. Environmentally, it takes a lot of energy to train these models (although new developments seem to be reducing that consumption...). Philosophically, there are unresolved questions regarding the morality and legality of how LLMs have used web materials, oftentimes copyrighted materials, to "learn". For many, these concerns are a strong deterrent from using AI, which is totally fair!
+
+In the specific context of Copilot, I can't say what it's environmental footprint has been, but I can say that there are some settings you can use to mitigate some of the concerns regarding the web content used for code suggestions.
+
+## Setting up Copilot
+
+In order to use Copilot, you'll need to first sign up for GitHub Education. Instructions can be found here:
+
+<https://docs.github.com/en/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-education-for-students/apply-to-github-education-as-a-student>
+
+You'll need to provide your UMN email address and some proof of enrollment. As I recall, UMN student ID cards don't have enough info on them, so I think I used an "Enrollment Verification" pdf downloaded from MyU (but maybe that was for Spotify...). Anyway, if you are reading this as part of a live workshop, this means you may have to wait a bit for verification before you can actually set up Copilot. Nevertheless, you can return to this site and set things up afterwards.
+
+Once you have GitHub Education, you can follow these steps to set up Copilot with GitHub:
+
+[https://docs.github.com/en/enterprise-cloud\@latest/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-your-github-copilot-pro-subscription/getting-free-access-to-copilot-pro-as-a-student-teacher-or-maintainer](https://docs.github.com/en/enterprise-cloud@latest/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-your-github-copilot-pro-subscription/getting-free-access-to-copilot-pro-as-a-student-teacher-or-maintainer)
+
+Basically, there should be a "Copilot" tab in your account settings where you can activate access.
+
+When you activate, there will be several setting for you to choose. First, there is enabling where Copilot can be used. Personally, I have it set as enabled for GitHub.com, the CLI, and my IDE. Copilot in GitHub.com allows you to chat with it's chatbot functionality on the website, and you can ask it questions about specific repositories. The CLI is basically your shell or terminal, which you may or may not use. Finally, I believe you need to enable Copilot for your IDE in order to link it to your RStudio, but I am not 100% positive.
+
+There are more settings that you'll want to consider. Perhaps the most important is this: "Suggestions matching public code (duplication detection filter)". With this enabled, Copilot will make code suggestions that are identical to code snippets from open-source projects housed on public GitHub repositories. However, these projects will have different licenses for use, and if you just use whatever code suggestions you get willy-nilly without proper attribution, you may be violating those licenses. Whenever you do accept one of these suggestions, Copilot will automatically add the license information to a log file, so you can figure out the ways to properly cite these repositories. Personally, I don't want to deal with that, so I just have this setting disabled. This means that Copilot primarily generates code suggestions based on programming language documentation, tutorials, and your own code (as far as I know).
+
+There are also settings to select whether Copilot uses your coding practices for product functionality evaluation and/or training, which you can decide for yourself. Other settings refer to the use of Bing and other LLMs with Copilot, which don't seem strictly necessary to me for many use cases.
+
+With these settings saved, Copilot should be activated for your GitHub account.
+
+## Copilot in RStudio
+
+The most useful function of Copilot that I have found is using it while I write R code in RStudio.
+
+Instructions on how to set this up can be found here:
+
+<https://docs.posit.co/ide/user/ide/guide/tools/copilot.html>
+
+The broad strokes are this:
+
+1.  Navigate to Tools \> Global Options \> Copilot in RStudio
+2.  Enable Copilot
+3.  Sign in and verify with your GitHub credentials
+
+Afterwards, Copilot should be connected to your RStudio installation.
+
+Copilot in RStudio works in two ways. First it will provide tailored code suggestions as you code. Second, it can answer questions within the script editor.
+
+For the first application, I have found it incredibly useful, but in order to get good suggestions, documenting your script with descriptive comments is key. First, having a broad goal outlined in \## comments at the top of the script is very helpful. Second, writing \## comments before each section of code describing what you are trying to do and which functions you are using to do it will provide Copilot with the context to generate fairly detailed code for you. As you move through your script in this way, Copilot will pick up on the context and often provide suggestions that match the way you have been coding so far. Whenever Copilot gives you a suggestion, just hit the Tab key to accept it.
+
+Asking questions in the script editor has not been very useful to me, but your mileage may vary. Use the following format typed into your .R or .qmd file: \# q: *\[question\]*? and hit enter. Copilot will respond with a \# a: answer. Here it had no interest in my small talk:
+
+``` R
+# q: what's up copilot?
+# a: I'm just here to help you write code. I'm not a copilot, I'm a code copilot.
+```
+
+## Copilot on GitHub
+
+You can also use Copilot on the GitHub website for coding questions in a more intuitive way than asking questions within a script.
+
+On almost every page on GitHub when you are logged in, there should be an icon near the top right that looks like a little face wearing a old-timey airplane pilot cap. If you click that, it will open a chat subwindow on that page.
+
+The nice thing about this functionality is that Copilot can read your repositories, so you don't have to copy and paste certain code to ask specific questions.
+
+I used Copilot on GitHub.com to generate a detailed overview of one of my repositories for a README file.
+
+There are probably many more ways to use it, but I haven't played around with it much yet.

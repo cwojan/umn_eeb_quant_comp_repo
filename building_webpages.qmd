@@ -1,9 +1,165 @@
 ---
-title: "building_websites"
+title: "Building GitHub Websites with RStudio"
 ---
 
 ## Introduction
 
+One really cool thing you can do with a GitHub repository is turn it into a "GitHub Page" on the web, and RStudio provides built-in, intuitive ways to do so.
+
+Before we get started, it is important to be familiar with "Quarto Markdown Files", which were referenced in the last section. These are similar to R Markdown files which you may be familiar with, but are compatible with other languages (like Python), and are generally more supported by modern documentation and interfaces these days.
+
+With Quarto documents, you can document and organize your code in ways that can be more clunky with pure comments. In addition, you can render these files to HTML and PDF formats, which allows you to share descriptive text with embedded code and figures. It also allows you to create HTML pages that can be published to the web without actually knowing HTML, through RStudio.
+
+We will talk about two ways to do that: making your own personal webpage with your github account, and publishing a web book. The website you are reading is a web book built with Quarto documents in RStudio and published through GitHub Pages.
+
+Before we get into it, the Quarto file format is extremely well-documented in detail here:
+
+<https://quarto.org/>
+
+You can also find more info on GitHub Pages here:
+
+<https://pages.github.com/>
+
+What follows is a brief overview of how I (Chris Wojan) have approached using Quarto to publish websites.
+
 ## Personal Webpages
 
-## Web Books
+While you can make websites for an unlimited number of your project repositories, with your free GitHub Account you can make one special website that is simply *username*.github.io. Here is mine:
+
+<https://cwojan.github.io/>
+
+And here is the repository that underlies it:
+
+<https://github.com/cwojan/cwojan.github.io>
+
+### Setup
+
+The key thing here is that you create a repository on GitHub that is named "\[your_username_here\].github.io". The simplest way to do this is to make a repository on GitHub itself and name it that, then "clone" it to an RStudio Project on your computer (as we did in an earlier section). However, this will lead to you needing to fill your repository with the requisite files for website publishing with Quarto.
+
+An alternative method, the one I used, is to make a new R Project in RStudio with a Quarto Website template. To do so in RStudio, click New Project \> New Directory \> Quarto Website. Then set the directory you want to save your site in. In "Directory name", type "\[your_username_here\].github.io" (with your respective username as the prefix). Also, check "Create a git repository".
+
+The project that is then created has the basic building blocks of a Quarto site:
+
+-   \_quarto.yaml
+
+    -   This file is the backbone and configuration of your site
+
+-   styles.css
+
+    -   This file will alter the appearance of your site, but will probably remain blank if you don't edit it yourself with your own CSS skills.
+
+-   index.qmd
+
+    -   this is a Quarto Document that serves as the homepage of your site
+
+-   about.qmd
+
+    -   this is a second page of your website, that can be "about" you
+
+-   .gitignore
+
+-   \[project_name\].Rproj
+
+Before we dig into building your site, let's make sure we can connect it to GitHub, since right now it only exists on your computer.
+
+The simplest way to do this is with the aforementioned "usethis" package in R. Otherwise you'll need to use shell/terminal commands.
+
+In your new project, simply run the following in your R console:
+
+``` r
+usethis::use_github()
+```
+
+If your git credentials are set as we did in prior sections, this will create a new repo of the same name as your local repo on GitHub and connect them together. If you named it correctly, this should then work for your special GitHub URL.
+
+To test things out, make some edits to the index.qmd or about.qmd, save and commit them, then push them. Check to make sure they show up on your repo on GitHub.
+
+Now there's a few steps to do before publishing (in addition to of course filling out your website):
+
+First, the simplest publishing method is to publish from a subfolder of rendered HTML in your repository. So first create a subfolder in your repo called "docs". Then add "output-dir: docs" to your \_quarto.yaml file, indented under the "project:" heading, after "type: website".
+
+Second, GitHub Pages uses Jekyll as a tool to build sites by default, but since we are using Quarto, we need to tell GitHub not to use Jekyll. To do this we just need to create a blank file called ".nojekyll".
+
+In the Terminal tab of the lower left pane in RStudio, enter
+
+MacOS (and probably Linux too):
+
+``` bash
+touch .nojekyll
+```
+
+Windows:
+
+``` bash
+copy NUL .nojekyll
+```
+
+These commands create that file.
+
+Finally, with the .nojekyll file pushed to the repo on GitHub, you will want to go into the repo's Settings (available along the top of the repo's base page), click "Pages", and make sure that the "Build and deployment" section is set to "Source: Deploy from a branch" and "Branch: main /docs". If you build you site now, there won't be anything because your docs folder is empty. You will need to render HTML files to that folder in RStudio before you have a site to publish.
+
+### Filling in and Editing your Website
+
+Making your website will begin and revolve around the \_quarto.yaml file. You can use it to add pages and change the look and theme of your site.
+
+In that file, there should be a "website:" header, under which there are indented sections relating to the site's title, navigation method, and the pages. You can add pages by creating a new line under the "- about.qmd" line, and then creating a file with that name and editing it.
+
+There is also a "format:" header, under which you can edit the look of the site. The easiest thing to do is edit the text after "theme:". Quarto works with the Bootswatch set of themes you can see here:
+
+<https://bootswatch.com/>
+
+The default is "cosmo", but you can switch to any that are shown. I use "minty" for my website =).
+
+You can also edit beyond those themes within the yaml or in a .css file, depending on your skills and desire to tweak things.
+
+More details on how to edit how your website works can be found here:
+
+<https://quarto.org/docs/websites/>
+
+And more info on HTML construction and theming can be found here:
+
+<https://quarto.org/docs/output-formats/html-basics.html>
+
+<https://quarto.org/docs/output-formats/html-themes.html>
+
+Feel free to look at my website's repo for very basic examples!
+
+### Publishing Your Site
+
+To publish your site, you'll first need to render your collection of Quarto documents to HTML/CSS/JavaScript, which is as easy as a click of a button!
+
+Under the "Build" tab in the upper right pane of RStudio, there should be a "Render Website" button. Click that, and RStudio will start filling the "docs" folder in your repo with rendered website files.
+
+Once that is done, you'll want to push your changes to GitHub. However, there may be many files in your git tab to stage before committing. To save time, you can use the following command in the Terminal to ready all changed files in your repo for committing:
+
+``` bash
+git add .
+```
+
+"git add" is the shell command for staging files, and "." basically refers to all files.
+
+All the files in your git tab should now have Staged checked, so you can go ahead and click Commit, and add a message like "initial site build" or something like that. Once committed, Push your commit to GitHub.
+
+Then, on GitHub, navigate to the Pages subtab in your repo's settings again, and click the button to publish your site (assuming it knows to publish from the docs folder).
+
+With that, a hyperlink should show up taking you to your site. Nice!
+
+When you make changes to your site's Quarto files or yaml, you'll need to rebuild it before pushing it, but then it should automatically republish those changes in a few minutes.
+
+Note: there are many other ways to publish websites with RStudio and Quarto, but this is just one simple way.
+
+## Other Websites, Web Books
+
+While personal websites are a common desire for folks, others might also consider publishing other repositories.
+
+You can make a GitHub page for any repository you have, so you could make a website for a research project or manuscript with R code built-in to show tables and figures. To do this, you could follow similar steps as for building your personal webpage (create a Quarto Website R Project in RStudio, and then create a connected repo on GitHub with usethis), but simply name it whatever you wish instead of your specific username plus github.io. The setup and publishing steps are virtually identical.
+
+You can also publish web books for educational purposes, like this one. In this case, you can start an R Project in RStudio with the "Quarto Book" template. This comes with many nifty features, like a well organized sidebar of chapters, and cross-referencing abilities. This website is a Quarto Book, and here is another example that I have made for Cedar Creek interns doing research projects:
+
+<https://cwojan.github.io/ccesr_intern_hub/>
+
+There is a ton of info on writing web book with Quarto here:
+
+<https://quarto.org/docs/books/>
+
+If you are interested in contributing to this book with helpful computational/quantitative resources for EEB folks, feel free to reach out to me (Chris Wojan) and I can share the repo with you so we can collaborate!
