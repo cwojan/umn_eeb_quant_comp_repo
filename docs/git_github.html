@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Functionals with purrr – UMN EEB Quant/Comp Repo</title>
+<title>8&nbsp; Git and GitHub – UMN EEB Quant/Comp Repo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./parallel_computing.html" rel="next">
-<link href="./functions.html" rel="prev">
+<link href="./organizing_repositories.html" rel="next">
+<link href="./vectorization.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_iteration.html">Iteration: Loops, Functions, and the purr package</a></li><li class="breadcrumb-item"><a href="./purrr.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Functionals with purrr</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./git_github.html">git, GitHub, Building Websites, and Copilot</a></li><li class="breadcrumb-item"><a href="./git_github.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git and GitHub</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -188,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./purrr.html" class="sidebar-item-text sidebar-link active">
+  <a href="./purrr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Functionals with purrr</span></span></a>
   </div>
 </li>
@@ -217,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git_github.html" class="sidebar-item-text sidebar-link">
+  <a href="./git_github.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git and GitHub</span></span></a>
   </div>
 </li>
@@ -251,18 +251,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-basic-map-functional" id="toc-the-basic-map-functional" class="nav-link active" data-scroll-target="#the-basic-map-functional"><span class="header-section-number">5.0.1</span> The Basic map Functional</a></li>
-  <li><a href="#iterating-over-two-ranges-with-map2" id="toc-iterating-over-two-ranges-with-map2" class="nav-link" data-scroll-target="#iterating-over-two-ranges-with-map2"><span class="header-section-number">5.0.2</span> Iterating over Two Ranges with map2</a></li>
-  <li><a href="#concluding-remarks-that-sounds-too-formal" id="toc-concluding-remarks-that-sounds-too-formal" class="nav-link" data-scroll-target="#concluding-remarks-that-sounds-too-formal"><span class="header-section-number">5.0.3</span> Concluding Remarks (that sounds too formal…)</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">8.1</span> Introduction</a>
+  <ul class="collapse">
+  <li><a href="#why" id="toc-why" class="nav-link" data-scroll-target="#why"><span class="header-section-number">8.1.1</span> Why?</a></li>
+  </ul></li>
+  <li><a href="#version-control-with-git" id="toc-version-control-with-git" class="nav-link" data-scroll-target="#version-control-with-git"><span class="header-section-number">8.2</span> Version Control with git</a>
+  <ul class="collapse">
+  <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos"><span class="header-section-number">8.2.1</span> MacOS</a></li>
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows"><span class="header-section-number">8.2.2</span> Windows</a></li>
+  <li><a href="#linux" id="toc-linux" class="nav-link" data-scroll-target="#linux"><span class="header-section-number">8.2.3</span> Linux</a></li>
+  </ul></li>
+  <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github"><span class="header-section-number">8.3</span> GitHub</a></li>
+  <li><a href="#connecting-in-rstudio" id="toc-connecting-in-rstudio" class="nav-link" data-scroll-target="#connecting-in-rstudio"><span class="header-section-number">8.4</span> Connecting in RStudio</a>
+  <ul class="collapse">
+  <li><a href="#configuring" id="toc-configuring" class="nav-link" data-scroll-target="#configuring"><span class="header-section-number">8.4.1</span> Configuring</a></li>
+  <li><a href="#creating-a-repo" id="toc-creating-a-repo" class="nav-link" data-scroll-target="#creating-a-repo"><span class="header-section-number">8.4.2</span> Creating a Repo</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_iteration.html">Iteration: Loops, Functions, and the purr package</a></li><li class="breadcrumb-item"><a href="./purrr.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Functionals with purrr</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./git_github.html">git, GitHub, Building Websites, and Copilot</a></li><li class="breadcrumb-item"><a href="./git_github.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git and GitHub</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Functionals with purrr</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git and GitHub</span></h1>
 </div>
 
 
@@ -279,179 +292,109 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Now that we’ve written a function, let’s use it efficiently with functionals. Functionals are functions that take other functions as one of their arguments, and then can apply that function a number of times or to a range of values (much like a loop!). Base R has the “apply” family of functionals, including lapply and sapply, but I’ve found those difficult to learn because they have inconsistent syntax and behavior. Instead, we will use the “map” functionals from the “purrr” package. It’s part of the tidyverse, so you likely already have it installed. If not, use this code:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"purrr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now, we can load the package, and make sure we have our fake plant data and quick_t_test function in our environment.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plant_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"control"</span>,<span class="st">"drought"</span>), <span class="at">each =</span> <span class="dv">30</span>),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">height_cm =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">60</span>, <span class="at">mean =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">8</span>), <span class="at">each =</span> <span class="dv">30</span>), <span class="at">sd =</span> <span class="dv">2</span>),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">dry_biomass_g =</span> <span class="fu">rnorm</span>(<span class="dv">60</span>, <span class="at">mean =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">40</span>), <span class="at">each =</span> <span class="dv">30</span>), <span class="at">sd =</span> <span class="dv">6</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">seed_mass_mg =</span> <span class="fu">rnorm</span>(<span class="dv">60</span>, <span class="at">mean =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">20</span>), <span class="at">each =</span> <span class="dv">30</span>), <span class="at">sd =</span> <span class="dv">4</span>))</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>quick_t_test <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, treatment, measurement){</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="do">## do t test</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(dat[,measurement] <span class="sc">~</span> dat[,treatment])</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## pull out summary</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  clean_result <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mean_diff =</span> <span class="fu">diff</span>(test_result<span class="sc">$</span>estimate),</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                           <span class="at">ci_lwr =</span> test_result<span class="sc">$</span>conf.int[<span class="dv">1</span>],</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                           <span class="at">ci_upr =</span> test_result<span class="sc">$</span>conf.int[<span class="dv">2</span>],</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                           <span class="at">p_val =</span> test_result<span class="sc">$</span>p.value)</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="do">## return the clean_result as output from the function</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(clean_result)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="the-basic-map-functional" class="level3" data-number="5.0.1">
-<h3 data-number="5.0.1" class="anchored" data-anchor-id="the-basic-map-functional"><span class="header-section-number">5.0.1</span> The Basic map Functional</h3>
-<p>Now let’s use the map functional to iterate our quick_t_test function over each of our dependent variables. We simply provide it what we want to iterate over and then we provide the function we want it to do as arguments. Let’s go over a simple example first, making vectors of randomly generated numbers of different lengths, 1 through 5.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>map_results <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="at">.x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="do">## iterate over .x</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">.f =</span> rnorm) <span class="do">## and do .f</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="do">## we get a list of vectors</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>map_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] -0.8103608
-
-[[2]]
-[1] -0.4415993 -0.6660411
-
-[[3]]
-[1]  0.2948643  0.5001403 -1.1030920
-
-[[4]]
-[1]  0.08744307  1.37182416 -2.07541543 -0.23835438
-
-[[5]]
-[1] -1.7638368 -0.8822560  1.6306415 -0.8866394 -1.9345887</code></pre>
-</div>
-</div>
-<p>One thing that is implicitly going on here is that 1:5 is being plugged into the first argument of rnorm by default, which is the number of observations to generate. The mean and sd default to 0 and 1 respectively (as indicated in the help doc for rnorm). However, our function has three arguments with no defaults, so we will need to supply those arguments and values in the map functional to do a quick t test for each of three variables:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## quick t test each dependent variable</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ttest_results <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>),</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.f =</span> quick_t_test,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">dat =</span> plant_data, <span class="at">treatment =</span> <span class="st">"treatment"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">## show results</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>ttest_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-                      mean_diff   ci_lwr   ci_upr        p_val
-mean in group drought -3.626521 2.504371 4.748671 2.328155e-08
-
-[[2]]
-                      mean_diff   ci_lwr   ci_upr        p_val
-mean in group drought -11.32183 7.981304 14.66236 7.125953e-09
-
-[[3]]
-                      mean_diff   ci_lwr   ci_upr        p_val
-mean in group drought -9.025421 7.134567 10.91627 2.192553e-13</code></pre>
-</div>
-</div>
-<p>However, this list isn’t super nice to look at. We could bind the rows into a data frame (with list_rbind or dplyr::bind_rows), or we could just made a data frame in the first place with map_dfr, which will always output a data frame (well, a tibble). Note that map_dfr is technically “superseded” because it requires the dplyr package to be installed, but it still works fine if you do.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## quick t test each dependent variable</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ttest_df <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>),</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.f =</span> quick_t_test,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">dat =</span> plant_data, <span class="at">treatment =</span> <span class="st">"treatment"</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="do">## add a label column</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ttest_df<span class="sc">$</span>dep_var <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="do">## show results</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>ttest_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                           mean_diff   ci_lwr    ci_upr        p_val
-mean in group drought...1  -3.626521 2.504371  4.748671 2.328155e-08
-mean in group drought...2 -11.321831 7.981304 14.662358 7.125953e-09
-mean in group drought...3  -9.025421 7.134567 10.916275 2.192553e-13
-                                dep_var
-mean in group drought...1     height_cm
-mean in group drought...2 dry_biomass_g
-mean in group drought...3  seed_mass_mg</code></pre>
-</div>
-</div>
-<p>Much nicer right? (just ignore those row names, we could remove them if we wanted). There are map functions that specifically output all sorts of data structures, like vectors of specific data types (e.g., map_chr for strings, map_int for integers). There is even a map functional that provides no output but iteratively performs a function: walk(). You could use walk when you want to iteratively draw plots or save files.</p>
-<p>One thing that is also helpful is that you can write a function within a map functional, if you just need to do something over and over again but don’t need to use the function elsewhere. So we could have done this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ttest_df2 <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>),</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.f =</span> <span class="cf">function</span>(x){</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                       <span class="do">## do t test</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                       test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(plant_data[,x] <span class="sc">~</span> </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                                             plant_data[,<span class="st">"treatment"</span>])</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                       <span class="do">## pull out summary</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                       clean_result <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mean_diff =</span> <span class="fu">diff</span>(test_result<span class="sc">$</span>estimate),</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">ci_lwr =</span> test_result<span class="sc">$</span>conf.int[<span class="dv">1</span>],</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">ci_upr =</span> test_result<span class="sc">$</span>conf.int[<span class="dv">2</span>],</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">p_val =</span> test_result<span class="sc">$</span>p.value)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                       <span class="do">## return the clean_result as output from the function</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">return</span>(clean_result)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                      })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We could have also done this with our pre-made function to deal with the arguments more explicitly:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ttest_df3 <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>),</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.f =</span> <span class="cf">function</span>(x){</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">quick_t_test</span>(<span class="at">dat =</span> plant_data, <span class="at">treatment =</span> <span class="st">"treatment"</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">measurement =</span> x)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                     })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="introduction" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">8.1</span> Introduction</h2>
+<p>This page aims to get people started with using version control in their coding and data analysis with R, specifically using git (a computer application) and GitHub (a website).</p>
+<p>By far the most useful resource for this aim is the following webpage from statistician Jenny Bryan:</p>
+<p><a href="https://happygitwithr.com/">Happy Git With R</a></p>
+<p>On this page is a shorter summary of some of the key points based on specifically how I (Chris Wojan) work with git and GitHub.</p>
+<section id="why" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="why"><span class="header-section-number">8.1.1</span> Why?</h3>
+<p>When writing code, three things can be helpful:</p>
+<ol type="1">
+<li>Backing up your scripts</li>
+<li>Sharing your code easily</li>
+<li>Looking at previous versions of code in case something breaks</li>
+</ol>
+<p>Using git allows you to save iterative versions of your code (and thus monitor your successive edits). Using GitHub allows you to back up your scripts online, and share your code easily with collaborators without attaching misc. files to emails.</p>
 </section>
-<section id="iterating-over-two-ranges-with-map2" class="level3" data-number="5.0.2">
-<h3 data-number="5.0.2" class="anchored" data-anchor-id="iterating-over-two-ranges-with-map2"><span class="header-section-number">5.0.2</span> Iterating over Two Ranges with map2</h3>
-<p>You can also iterate over two ranges of values with map2 functionals, or many with pmap functionals. Let’s try it with our data by calculating the covariance between each pair of our dependent variables (there are likely other functions for this, but again, this is just a demo):</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## first let's find the pairs of our variables with combn</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>var_coms <span class="ot">&lt;-</span> <span class="fu">combn</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>), <span class="at">m =</span> <span class="dv">2</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>var_coms</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1]            [,2]           [,3]           
-[1,] "height_cm"     "height_cm"    "dry_biomass_g"
-[2,] "dry_biomass_g" "seed_mass_mg" "seed_mass_mg" </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## we can use the two rows as our iterating ranges</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="do">## use map2_dbl to coerce to numeric vector</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>var_covs <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>(<span class="at">.x =</span> var_coms[<span class="dv">1</span>,], <span class="at">.y =</span> var_coms[<span class="dv">2</span>,],</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.f =</span> <span class="cf">function</span>(x, y){ <span class="do">## use a wrapper function to set the data frame</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">cov</span>(plant_data[,x], plant_data[y])</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                     })</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>var_covs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 15.353995  8.288571 28.765872</code></pre>
-</div>
-</div>
-<p>Here we didn’t just use “cov” because we wanted to pull the data from the plant_data data frame, so we used a “wrapper” function so that we could more precisely set the arguments of cov().</p>
-<p>We can put all of our info together like so:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plant_covs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">var1 =</span> var_coms[<span class="dv">1</span>,],</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">var2 =</span> var_coms[<span class="dv">2</span>,],</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">cov =</span> var_covs)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>plant_covs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>           var1          var2       cov
-1     height_cm dry_biomass_g 15.353995
-2     height_cm  seed_mass_mg  8.288571
-3 dry_biomass_g  seed_mass_mg 28.765872</code></pre>
-</div>
-</div>
-<p>We could have also plugged the map functional right into our data.frame construction. If you are familiar with dplyr and use mutate, you can mutate new columns using map as well!</p>
 </section>
-<section id="concluding-remarks-that-sounds-too-formal" class="level3" data-number="5.0.3">
-<h3 data-number="5.0.3" class="anchored" data-anchor-id="concluding-remarks-that-sounds-too-formal"><span class="header-section-number">5.0.3</span> Concluding Remarks (that sounds too formal…)</h3>
-<p>Since the above demonstrations are relatively simple, you may be skeptical of the advantages of writing custom functions to iterate with functionals like map. And if you prefer to use loops, just use loops! You can do a lot of cool stuff with for loops. However, I think it’s always nice to add more techniques to your “coding toolbox,” as you can solve more problems.</p>
-<p>Particularly, as your code gets more complex and interconnected, and your project gets larger, functions and functionals can really come in handy for keeping things organized. For example, I have a simulation project where I have a function to generate simulated landscapes, functions to look at those landscapes, a function to simulate animal movement over those landscapes, and a function that applies parasitic interactions with those animals (the animal movement function is called within this function). This way I can pinpoint where bugs might be easily and transfer my landscape generation or movement functions to other projects. Perhaps most importantly, I can use map to try generating landscapes and simulating movement under a range of different parameters. This general organizational concept could be applied to more analytical projects where you are aalyzing and plotting different datasets in different ways.</p>
-<p>In the end, you have the most important opinion on how you code, so try using functionals and see how they can be best integrated into your coding!</p>
-<p>If you’d like to learn more than this shallow introduction, check this link out:</p>
-<p><a href="https://purrr.tidyverse.org/" class="uri">https://purrr.tidyverse.org/</a></p>
+<section id="version-control-with-git" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="version-control-with-git"><span class="header-section-number">8.2</span> Version Control with git</h2>
+<p>Our first step is to get git installed locally on our computers. Since git is designed primarily for computer programming applications, its installation is a bit different than many applications, and the steps vary among operating systems.</p>
+<section id="macos" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="macos"><span class="header-section-number">8.2.1</span> MacOS</h3>
+<p>If you use MacOS (like me), installing git is fairly straightforward, but there are a few ways to do it.</p>
+<p>Note: if you think git might already be installed on your computer, you can check by opening the Terminal in RStudio (Tools -&gt; Terminal) or through your OS (e.g.&nbsp;MacOS’ Terminal application), and then entering the command:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I personally have installed <a href="https://brew.sh/">Homebrew</a>, which is a tool that allows you to install useful applications and code packages. You can install Homebrew with the traditional Mac .pkg installation process from their <a href="https://github.com/Homebrew/brew/releases/tag/4.4.19">GitHub Repository</a>. Alternatively, you can open the Terminal application on your Mac and input the following command:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/bin/bash</span> <span class="at">-c</span> <span class="st">"</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="va">)</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>With Homebrew installed, you can simply open the MacOS Terminal application or Terminal in RStudio (Tools -&gt; Terminal) and input the following command:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Alternatively, Apple features git in its “xcode” set of command line tools, you can install these (including git) with this command in your Terminal:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="windows" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="windows"><span class="header-section-number">8.2.2</span> Windows</h3>
+<p>I am personally less adept with git on Windows, but you should be able to download git through a typical installer from these pages:</p>
+<p><a href="https://gitforwindows.org/">Git For Windows</a></p>
+<p>or</p>
+<p><a href="https://git-scm.com/downloads/win">Windows git Download</a></p>
+<p>Both of those should come with a git Bash Shell, where you can input command line git actions if needed. Windows doesn’t have a simple shell/terminal situation like MacOS does unfortunately. However, you should be able to check if you have git installed in Command Prompt, VirtualShell, or something else (?) with</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="linux" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="linux"><span class="header-section-number">8.2.3</span> Linux</h3>
+<p>If you are using Linux, you know more than me.</p>
+</section>
+</section>
+<section id="github" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="github"><span class="header-section-number">8.3</span> GitHub</h2>
+<p>While git can be used locally for version control, it is arguably most effective when used in conjunction with an online repository. GitHub is the most popular and well-documented.</p>
+<p>You can register an account for free here:</p>
+<p><a href="https://github.com" class="uri">https://github.com</a></p>
+<p>The aforementioned Jenny Bryan recommends choosing a simple username that features your name somehow, and I do too as you’ll likely be using this account in conjunction with your scientific publications.</p>
+<p>In addition, the username you choose will be the prefix of your personal website if you choose to make one with GitHub.</p>
+<p>Also, as a University of Minnesota student, you can get access to Github Education through this page:</p>
+<p><a href="https://github.com/education">GitHub Education</a></p>
+<p>This comes with a variety of features, but the only one I’ve used is Copilot, which we’ll go over in a later page.</p>
+<p>With a GitHub account, you can make an unlimited number of “repositories”, which are basically folders hierarchies for code (in truth, this is based on how git works without GitHub). These repositories can be private or public, and you can switch visibility after you’ve made one (e.g., making a repo public when submitting a manuscript). R Projects in RStudio are designed to match and work as git repositories.</p>
+</section>
+<section id="connecting-in-rstudio" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="connecting-in-rstudio"><span class="header-section-number">8.4</span> Connecting in RStudio</h2>
+<p>Now you should have git installed on your computer, and GitHub account where you can back up and share your code. While you can use git in the Terminal/Shell to send files to GitHub, it is easier for beginners (and me) to use RStudio to connect things.</p>
+<section id="configuring" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="configuring"><span class="header-section-number">8.4.1</span> Configuring</h3>
+<p>There are also some handy R packages to make things easy that we can use. The first is “<a href="https://usethis.r-lib.org/">usethis</a>”, which has various utilities for managing coding projects in R.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"usethis"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>One nifty function is the ability to configure your git installation through R, i.e.&nbsp;setting your name and GitHub account-related email:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">"Jane Doe"</span>, <span class="at">user.email =</span> <span class="st">"jane@example.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I believe this is a necessary step to get things working, but I’m not absolutely positive. It’s easy enough though!</p>
+<p>Next, there is the very useful “<a href="https://gitcreds.r-lib.org/index.html">gitcreds</a>” package (this one will likely get periodic use, as you will see).</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"gitcreds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will take us to how we can “log in” to GitHub through RStudio. To do this, we will need a Personal Access Token or PAT to authorize RStudio to do git actions. You can do this through usethis, but I think it is more intuitive to do it on the GitHub website.</p>
+<p>To do so, when logged in on GitHub, click your profile picture in the upper right (probably a weird collection of pixels), and scroll down to Settings. Once there, scroll down to “Developer Settings” on the left sidebar. Click that and then Personal Access Tokens again on the left sidebar, and “Tokens (classic)” in the dropdown. There, you can click Generate New Token (again choose “classic”).</p>
+<p>When generating a new token, you’ll be given a bevy of options, the first of which is a note. I usually just call it the month and the year.</p>
+<p>Then you set how long until it expires. You can set it to never expire, which GitHub does not recommend, but I just go with 90 days myself (after which you will just repeat the process we are doing now).</p>
+<p>You will also set the scope of the token. For our purposes click the header checkboxes for repo, workflow, and user.</p>
+<p>Then click generate token, and you’ll be given a long sequence of characters that you should copy to your clipboard, as you won’t be seeing it again. If you close the window or something beforehand, you can just generate a new token though.</p>
+<p>Now, with PAT copied, we can run the following code in R:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It will then prompt you to set or replace your credentials. You can use your GitHub username, and the PAT you generated as the password.</p>
+<p>Now you should be able to communicate from RStudio to GitHub!</p>
+</section>
+<section id="creating-a-repo" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="creating-a-repo"><span class="header-section-number">8.4.2</span> Creating a Repo</h3>
+<p>To test out our connection, let’s make a repository! The simplest way, and the way I usually do this is by making a repository on GitHub first.</p>
+<p>To do so, be logged in to GitHub and click the green “New” button near repositories on the left of your dashboard page.</p>
+<p>The page it takes you to will have a few options. The most important is the repository name. For this purpose it doesn’t really matter, as you can delete this repository after testing.</p>
+<p>You can also set if it is private or public, add a readme, select a gitignore template (more on this later), and set the license, but you don’t need to bother with those for now.</p>
+<p>When you hit create, you’ll be taken to a new repo page. If you did not create a Readme, it will just be a setup page where you can copy the HTTPS link easily (which you should do!).</p>
+<p>Alternatively, with a readme file, you’ll have a more traditional repo page, where you can click the green “Code” button to copy the HTTPS link to the repo.</p>
+<p>In either case, the link should look like “https://github.com/your-username/your-repo.git”.</p>
+<p>With this copied, head to RStudio, and click File &gt; New Project, or New Project from the project tab in the upper right.</p>
+<p>In the dialog box that pops up, select “Version Control” then “git”, and paste in your repository link in the “Repository URL” field. Take note of the directory where this project is being saved.</p>
+<p>With the new project opened, you can edit the Readme.md file, or create a new .R file, and save these change locally in RStudio. Do something like this.</p>
+<p>You should notice that in the upper right pane of RStudio, there is a git tab. There, any new saved change you have made should show up. You can click the check box under “Staged” to add these changes to a potential “commit”. A commit is a locally stored snapshot of a repository that you can create whenever you choose to.</p>
+<p>With your changes staged, click the Commit button in the git tab, and you’ll see a dialog box where you can add a message for the commit, summarizing what changes have been made. You can also track what changes you’ve done. Then you can click commit and close the window.</p>
+<p>Now you can “push” these changes to your GitHub repository. Remember, commits are local to wherever you are, but can be pushed or pulled elsewhere. You can push your commits from your computer to GitHub, and you can pull commits made elsewhere from GitHub to your computer.</p>
+<p>In the git tab, there are “Push” and “Pull” buttons. If you are ever working collaboratively, it can be good practice to pull before you push everytime. If you are just backing up and sharing your own code, you can just push from RStudio to GitHub when needed. Click “Push” to send your commit to GitHub.</p>
+<p>If you refresh the repository’s page on GitHub, you should see the files you made or edited in RStudio there. Woohoo!</p>
+<p>You can also make edits to things on GitHub and then “Pull” them to Rstudio in the git tab, but that isn’t a common thing to do at least in my experience. Pulling will mostly be relevant if you are working on a git repo with others or by yourself on multiple computers.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1021,13 +964,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./functions.html" class="pagination-link" aria-label="Functions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span>
+      <a href="./vectorization.html" class="pagination-link" aria-label="Vectorization">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Vectorization</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./parallel_computing.html" class="pagination-link" aria-label="Parallel Computing with map">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Parallel Computing with map</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./organizing_repositories.html" class="pagination-link" aria-label="Organizing Repositories">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Organizing Repositories</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

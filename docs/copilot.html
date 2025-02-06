@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Functionals with purrr – UMN EEB Quant/Comp Repo</title>
+<title>11&nbsp; GitHub Copilot – UMN EEB Quant/Comp Repo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./parallel_computing.html" rel="next">
-<link href="./functions.html" rel="prev">
+<link href="./building_webpages.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -117,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_iteration.html">Iteration: Loops, Functions, and the purr package</a></li><li class="breadcrumb-item"><a href="./purrr.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Functionals with purrr</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./git_github.html">git, GitHub, Building Websites, and Copilot</a></li><li class="breadcrumb-item"><a href="./copilot.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">GitHub Copilot</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -188,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./purrr.html" class="sidebar-item-text sidebar-link active">
+  <a href="./purrr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Functionals with purrr</span></span></a>
   </div>
 </li>
@@ -235,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./copilot.html" class="sidebar-item-text sidebar-link">
+  <a href="./copilot.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">GitHub Copilot</span></span></a>
   </div>
 </li>
@@ -251,18 +250,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-basic-map-functional" id="toc-the-basic-map-functional" class="nav-link active" data-scroll-target="#the-basic-map-functional"><span class="header-section-number">5.0.1</span> The Basic map Functional</a></li>
-  <li><a href="#iterating-over-two-ranges-with-map2" id="toc-iterating-over-two-ranges-with-map2" class="nav-link" data-scroll-target="#iterating-over-two-ranges-with-map2"><span class="header-section-number">5.0.2</span> Iterating over Two Ranges with map2</a></li>
-  <li><a href="#concluding-remarks-that-sounds-too-formal" id="toc-concluding-remarks-that-sounds-too-formal" class="nav-link" data-scroll-target="#concluding-remarks-that-sounds-too-formal"><span class="header-section-number">5.0.3</span> Concluding Remarks (that sounds too formal…)</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">11.1</span> Introduction</a></li>
+  <li><a href="#setting-up-copilot" id="toc-setting-up-copilot" class="nav-link" data-scroll-target="#setting-up-copilot"><span class="header-section-number">11.2</span> Setting up Copilot</a></li>
+  <li><a href="#copilot-in-rstudio" id="toc-copilot-in-rstudio" class="nav-link" data-scroll-target="#copilot-in-rstudio"><span class="header-section-number">11.3</span> Copilot in RStudio</a></li>
+  <li><a href="#copilot-on-github" id="toc-copilot-on-github" class="nav-link" data-scroll-target="#copilot-on-github"><span class="header-section-number">11.4</span> Copilot on GitHub</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_iteration.html">Iteration: Loops, Functions, and the purr package</a></li><li class="breadcrumb-item"><a href="./purrr.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Functionals with purrr</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./git_github.html">git, GitHub, Building Websites, and Copilot</a></li><li class="breadcrumb-item"><a href="./copilot.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">GitHub Copilot</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Functionals with purrr</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">GitHub Copilot</span></h1>
 </div>
 
 
@@ -279,177 +279,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Now that we’ve written a function, let’s use it efficiently with functionals. Functionals are functions that take other functions as one of their arguments, and then can apply that function a number of times or to a range of values (much like a loop!). Base R has the “apply” family of functionals, including lapply and sapply, but I’ve found those difficult to learn because they have inconsistent syntax and behavior. Instead, we will use the “map” functionals from the “purrr” package. It’s part of the tidyverse, so you likely already have it installed. If not, use this code:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"purrr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now, we can load the package, and make sure we have our fake plant data and quick_t_test function in our environment.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plant_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"control"</span>,<span class="st">"drought"</span>), <span class="at">each =</span> <span class="dv">30</span>),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">height_cm =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">60</span>, <span class="at">mean =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">8</span>), <span class="at">each =</span> <span class="dv">30</span>), <span class="at">sd =</span> <span class="dv">2</span>),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">dry_biomass_g =</span> <span class="fu">rnorm</span>(<span class="dv">60</span>, <span class="at">mean =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">40</span>), <span class="at">each =</span> <span class="dv">30</span>), <span class="at">sd =</span> <span class="dv">6</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">seed_mass_mg =</span> <span class="fu">rnorm</span>(<span class="dv">60</span>, <span class="at">mean =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">20</span>), <span class="at">each =</span> <span class="dv">30</span>), <span class="at">sd =</span> <span class="dv">4</span>))</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>quick_t_test <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, treatment, measurement){</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="do">## do t test</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(dat[,measurement] <span class="sc">~</span> dat[,treatment])</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## pull out summary</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  clean_result <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mean_diff =</span> <span class="fu">diff</span>(test_result<span class="sc">$</span>estimate),</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                           <span class="at">ci_lwr =</span> test_result<span class="sc">$</span>conf.int[<span class="dv">1</span>],</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                           <span class="at">ci_upr =</span> test_result<span class="sc">$</span>conf.int[<span class="dv">2</span>],</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                           <span class="at">p_val =</span> test_result<span class="sc">$</span>p.value)</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="do">## return the clean_result as output from the function</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(clean_result)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="the-basic-map-functional" class="level3" data-number="5.0.1">
-<h3 data-number="5.0.1" class="anchored" data-anchor-id="the-basic-map-functional"><span class="header-section-number">5.0.1</span> The Basic map Functional</h3>
-<p>Now let’s use the map functional to iterate our quick_t_test function over each of our dependent variables. We simply provide it what we want to iterate over and then we provide the function we want it to do as arguments. Let’s go over a simple example first, making vectors of randomly generated numbers of different lengths, 1 through 5.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>map_results <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="at">.x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="do">## iterate over .x</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">.f =</span> rnorm) <span class="do">## and do .f</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="do">## we get a list of vectors</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>map_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] -0.8103608
-
-[[2]]
-[1] -0.4415993 -0.6660411
-
-[[3]]
-[1]  0.2948643  0.5001403 -1.1030920
-
-[[4]]
-[1]  0.08744307  1.37182416 -2.07541543 -0.23835438
-
-[[5]]
-[1] -1.7638368 -0.8822560  1.6306415 -0.8866394 -1.9345887</code></pre>
-</div>
-</div>
-<p>One thing that is implicitly going on here is that 1:5 is being plugged into the first argument of rnorm by default, which is the number of observations to generate. The mean and sd default to 0 and 1 respectively (as indicated in the help doc for rnorm). However, our function has three arguments with no defaults, so we will need to supply those arguments and values in the map functional to do a quick t test for each of three variables:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## quick t test each dependent variable</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ttest_results <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>),</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.f =</span> quick_t_test,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">dat =</span> plant_data, <span class="at">treatment =</span> <span class="st">"treatment"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">## show results</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>ttest_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-                      mean_diff   ci_lwr   ci_upr        p_val
-mean in group drought -3.626521 2.504371 4.748671 2.328155e-08
-
-[[2]]
-                      mean_diff   ci_lwr   ci_upr        p_val
-mean in group drought -11.32183 7.981304 14.66236 7.125953e-09
-
-[[3]]
-                      mean_diff   ci_lwr   ci_upr        p_val
-mean in group drought -9.025421 7.134567 10.91627 2.192553e-13</code></pre>
-</div>
-</div>
-<p>However, this list isn’t super nice to look at. We could bind the rows into a data frame (with list_rbind or dplyr::bind_rows), or we could just made a data frame in the first place with map_dfr, which will always output a data frame (well, a tibble). Note that map_dfr is technically “superseded” because it requires the dplyr package to be installed, but it still works fine if you do.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## quick t test each dependent variable</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ttest_df <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>),</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.f =</span> quick_t_test,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">dat =</span> plant_data, <span class="at">treatment =</span> <span class="st">"treatment"</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="do">## add a label column</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ttest_df<span class="sc">$</span>dep_var <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="do">## show results</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>ttest_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                           mean_diff   ci_lwr    ci_upr        p_val
-mean in group drought...1  -3.626521 2.504371  4.748671 2.328155e-08
-mean in group drought...2 -11.321831 7.981304 14.662358 7.125953e-09
-mean in group drought...3  -9.025421 7.134567 10.916275 2.192553e-13
-                                dep_var
-mean in group drought...1     height_cm
-mean in group drought...2 dry_biomass_g
-mean in group drought...3  seed_mass_mg</code></pre>
-</div>
-</div>
-<p>Much nicer right? (just ignore those row names, we could remove them if we wanted). There are map functions that specifically output all sorts of data structures, like vectors of specific data types (e.g., map_chr for strings, map_int for integers). There is even a map functional that provides no output but iteratively performs a function: walk(). You could use walk when you want to iteratively draw plots or save files.</p>
-<p>One thing that is also helpful is that you can write a function within a map functional, if you just need to do something over and over again but don’t need to use the function elsewhere. So we could have done this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ttest_df2 <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>),</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.f =</span> <span class="cf">function</span>(x){</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                       <span class="do">## do t test</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                       test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(plant_data[,x] <span class="sc">~</span> </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                                             plant_data[,<span class="st">"treatment"</span>])</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                       <span class="do">## pull out summary</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                       clean_result <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mean_diff =</span> <span class="fu">diff</span>(test_result<span class="sc">$</span>estimate),</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">ci_lwr =</span> test_result<span class="sc">$</span>conf.int[<span class="dv">1</span>],</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">ci_upr =</span> test_result<span class="sc">$</span>conf.int[<span class="dv">2</span>],</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">p_val =</span> test_result<span class="sc">$</span>p.value)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                       <span class="do">## return the clean_result as output from the function</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">return</span>(clean_result)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                      })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We could have also done this with our pre-made function to deal with the arguments more explicitly:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ttest_df3 <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>),</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.f =</span> <span class="cf">function</span>(x){</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">quick_t_test</span>(<span class="at">dat =</span> plant_data, <span class="at">treatment =</span> <span class="st">"treatment"</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">measurement =</span> x)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                     })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="introduction" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">11.1</span> Introduction</h2>
+<p>When we went over signing up for a GitHub account, I mentioned how you can get access to GitHub Education by verifying your student status at UMN. There are many features to GitHub Education, most of which I have not used. The one I have used, and found somewhat useful, is GitHub Copilot. Copilot is a Large Language Model (commonly referred to as AI) built on the GPT framework specifically fine-tuned for computer programming. You can use it to answer coding questions specific to your GitHub repositories, as well as interactively while you are coding to solve problems.</p>
+<p>Of course, there are ethical concerns to AI usage. Environmentally, it takes a lot of energy to train these models (although new developments seem to be reducing that consumption…). Philosophically, there are unresolved questions regarding the morality and legality of how LLMs have used web materials, oftentimes copyrighted materials, to “learn”. For many, these concerns are a strong deterrent from using AI, which is totally fair!</p>
+<p>In the specific context of Copilot, I can’t say what it’s environmental footprint has been, but I can say that there are some settings you can use to mitigate some of the concerns regarding the web content used for code suggestions.</p>
 </section>
-<section id="iterating-over-two-ranges-with-map2" class="level3" data-number="5.0.2">
-<h3 data-number="5.0.2" class="anchored" data-anchor-id="iterating-over-two-ranges-with-map2"><span class="header-section-number">5.0.2</span> Iterating over Two Ranges with map2</h3>
-<p>You can also iterate over two ranges of values with map2 functionals, or many with pmap functionals. Let’s try it with our data by calculating the covariance between each pair of our dependent variables (there are likely other functions for this, but again, this is just a demo):</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## first let's find the pairs of our variables with combn</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>var_coms <span class="ot">&lt;-</span> <span class="fu">combn</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"height_cm"</span>, <span class="st">"dry_biomass_g"</span>, <span class="st">"seed_mass_mg"</span>), <span class="at">m =</span> <span class="dv">2</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>var_coms</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1]            [,2]           [,3]           
-[1,] "height_cm"     "height_cm"    "dry_biomass_g"
-[2,] "dry_biomass_g" "seed_mass_mg" "seed_mass_mg" </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## we can use the two rows as our iterating ranges</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="do">## use map2_dbl to coerce to numeric vector</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>var_covs <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>(<span class="at">.x =</span> var_coms[<span class="dv">1</span>,], <span class="at">.y =</span> var_coms[<span class="dv">2</span>,],</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.f =</span> <span class="cf">function</span>(x, y){ <span class="do">## use a wrapper function to set the data frame</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">cov</span>(plant_data[,x], plant_data[y])</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                     })</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>var_covs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 15.353995  8.288571 28.765872</code></pre>
-</div>
-</div>
-<p>Here we didn’t just use “cov” because we wanted to pull the data from the plant_data data frame, so we used a “wrapper” function so that we could more precisely set the arguments of cov().</p>
-<p>We can put all of our info together like so:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plant_covs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">var1 =</span> var_coms[<span class="dv">1</span>,],</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">var2 =</span> var_coms[<span class="dv">2</span>,],</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">cov =</span> var_covs)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>plant_covs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>           var1          var2       cov
-1     height_cm dry_biomass_g 15.353995
-2     height_cm  seed_mass_mg  8.288571
-3 dry_biomass_g  seed_mass_mg 28.765872</code></pre>
-</div>
-</div>
-<p>We could have also plugged the map functional right into our data.frame construction. If you are familiar with dplyr and use mutate, you can mutate new columns using map as well!</p>
+<section id="setting-up-copilot" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="setting-up-copilot"><span class="header-section-number">11.2</span> Setting up Copilot</h2>
+<p>In order to use Copilot, you’ll need to first sign up for GitHub Education. Instructions can be found here:</p>
+<p><a href="https://docs.github.com/en/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-education-for-students/apply-to-github-education-as-a-student" class="uri">https://docs.github.com/en/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-education-for-students/apply-to-github-education-as-a-student</a></p>
+<p>You’ll need to provide your UMN email address and some proof of enrollment. As I recall, UMN student ID cards don’t have enough info on them, so I think I used an “Enrollment Verification” pdf downloaded from MyU (but maybe that was for Spotify…). Anyway, if you are reading this as part of a live workshop, this means you may have to wait a bit for verification before you can actually set up Copilot. Nevertheless, you can return to this site and set things up afterwards.</p>
+<p>Once you have GitHub Education, you can follow these steps to set up Copilot with GitHub:</p>
+<p><a href="https://docs.github.com/en/enterprise-cloud@latest/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-your-github-copilot-pro-subscription/getting-free-access-to-copilot-pro-as-a-student-teacher-or-maintainer">https://docs.github.com/en/enterprise-cloud@latest/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-your-github-copilot-pro-subscription/getting-free-access-to-copilot-pro-as-a-student-teacher-or-maintainer</a></p>
+<p>Basically, there should be a “Copilot” tab in your account settings where you can activate access.</p>
+<p>When you activate, there will be several setting for you to choose. First, there is enabling where Copilot can be used. Personally, I have it set as enabled for GitHub.com, the CLI, and my IDE. Copilot in GitHub.com allows you to chat with it’s chatbot functionality on the website, and you can ask it questions about specific repositories. The CLI is basically your shell or terminal, which you may or may not use. Finally, I believe you need to enable Copilot for your IDE in order to link it to your RStudio, but I am not 100% positive.</p>
+<p>There are more settings that you’ll want to consider. Perhaps the most important is this: “Suggestions matching public code (duplication detection filter)”. With this enabled, Copilot will make code suggestions that are identical to code snippets from open-source projects housed on public GitHub repositories. However, these projects will have different licenses for use, and if you just use whatever code suggestions you get willy-nilly without proper attribution, you may be violating those licenses. Whenever you do accept one of these suggestions, Copilot will automatically add the license information to a log file, so you can figure out the ways to properly cite these repositories. Personally, I don’t want to deal with that, so I just have this setting disabled. This means that Copilot primarily generates code suggestions based on programming language documentation, tutorials, and your own code (as far as I know).</p>
+<p>There are also settings to select whether Copilot uses your coding practices for product functionality evaluation and/or training, which you can decide for yourself. Other settings refer to the use of Bing and other LLMs with Copilot, which don’t seem strictly necessary to me for many use cases.</p>
+<p>With these settings saved, Copilot should be activated for your GitHub account.</p>
 </section>
-<section id="concluding-remarks-that-sounds-too-formal" class="level3" data-number="5.0.3">
-<h3 data-number="5.0.3" class="anchored" data-anchor-id="concluding-remarks-that-sounds-too-formal"><span class="header-section-number">5.0.3</span> Concluding Remarks (that sounds too formal…)</h3>
-<p>Since the above demonstrations are relatively simple, you may be skeptical of the advantages of writing custom functions to iterate with functionals like map. And if you prefer to use loops, just use loops! You can do a lot of cool stuff with for loops. However, I think it’s always nice to add more techniques to your “coding toolbox,” as you can solve more problems.</p>
-<p>Particularly, as your code gets more complex and interconnected, and your project gets larger, functions and functionals can really come in handy for keeping things organized. For example, I have a simulation project where I have a function to generate simulated landscapes, functions to look at those landscapes, a function to simulate animal movement over those landscapes, and a function that applies parasitic interactions with those animals (the animal movement function is called within this function). This way I can pinpoint where bugs might be easily and transfer my landscape generation or movement functions to other projects. Perhaps most importantly, I can use map to try generating landscapes and simulating movement under a range of different parameters. This general organizational concept could be applied to more analytical projects where you are aalyzing and plotting different datasets in different ways.</p>
-<p>In the end, you have the most important opinion on how you code, so try using functionals and see how they can be best integrated into your coding!</p>
-<p>If you’d like to learn more than this shallow introduction, check this link out:</p>
-<p><a href="https://purrr.tidyverse.org/" class="uri">https://purrr.tidyverse.org/</a></p>
+<section id="copilot-in-rstudio" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="copilot-in-rstudio"><span class="header-section-number">11.3</span> Copilot in RStudio</h2>
+<p>The most useful function of Copilot that I have found is using it while I write R code in RStudio.</p>
+<p>Instructions on how to set this up can be found here:</p>
+<p><a href="https://docs.posit.co/ide/user/ide/guide/tools/copilot.html" class="uri">https://docs.posit.co/ide/user/ide/guide/tools/copilot.html</a></p>
+<p>The broad strokes are this:</p>
+<ol type="1">
+<li>Navigate to Tools &gt; Global Options &gt; Copilot in RStudio</li>
+<li>Enable Copilot</li>
+<li>Sign in and verify with your GitHub credentials</li>
+</ol>
+<p>Afterwards, Copilot should be connected to your RStudio installation.</p>
+<p>Copilot in RStudio works in two ways. First it will provide tailored code suggestions as you code. Second, it can answer questions within the script editor.</p>
+<p>For the first application, I have found it incredibly useful, but in order to get good suggestions, documenting your script with descriptive comments is key. First, having a broad goal outlined in ## comments at the top of the script is very helpful. Second, writing ## comments before each section of code describing what you are trying to do and which functions you are using to do it will provide Copilot with the context to generate fairly detailed code for you. As you move through your script in this way, Copilot will pick up on the context and often provide suggestions that match the way you have been coding so far. Whenever Copilot gives you a suggestion, just hit the Tab key to accept it.</p>
+<p>Asking questions in the script editor has not been very useful to me, but your mileage may vary. Use the following format typed into your .R or .qmd file: # q: <em>[question]</em>? and hit enter. Copilot will respond with a # a: answer. Here it had no interest in my small talk:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># q: what's up copilot?</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># a: I'm just here to help you write code. I'm not a copilot, I'm a code copilot.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="copilot-on-github" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="copilot-on-github"><span class="header-section-number">11.4</span> Copilot on GitHub</h2>
+<p>You can also use Copilot on the GitHub website for coding questions in a more intuitive way than asking questions within a script.</p>
+<p>On almost every page on GitHub when you are logged in, there should be an icon near the top right that looks like a little face wearing a old-timey airplane pilot cap. If you click that, it will open a chat subwindow on that page.</p>
+<p>The nice thing about this functionality is that Copilot can read your repositories, so you don’t have to copy and paste certain code to ask specific questions.</p>
+<p>I used Copilot on GitHub.com to generate a detailed overview of one of my repositories for a README file.</p>
+<p>There are probably many more ways to use it, but I haven’t played around with it much yet.</p>
 
 
 </section>
@@ -1021,14 +894,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./functions.html" class="pagination-link" aria-label="Functions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span>
+      <a href="./building_webpages.html" class="pagination-link" aria-label="Building GitHub Websites with RStudio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Building GitHub Websites with RStudio</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./parallel_computing.html" class="pagination-link" aria-label="Parallel Computing with map">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Parallel Computing with map</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

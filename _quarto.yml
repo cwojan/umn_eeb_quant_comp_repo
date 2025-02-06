@@ -21,7 +21,7 @@ book:
       chapters:
         - git_github.qmd
         - organizing_repositories.qmd
-        - building_websites.qmd
+        - building_webpages.qmd
         - copilot.qmd
 
 bibliography: references.bib
