@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; When to Loop? – UMN EEB Quant/Comp Repo</title>
+<title>14&nbsp; Create New Files and Folders – UMN EEB Quant/Comp Repo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./functions.html" rel="next">
-<link href="./loop_types.html" rel="prev">
+<link href="./backup_data.html" rel="next">
+<link href="./access_files.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -105,35 +105,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -146,7 +117,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_iteration.html">Iteration: Loops, Functions, and the purr package</a></li><li class="breadcrumb-item"><a href="./when_loops.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./account_setup.html">Data Pipelines with Google Drive and Google Sheets</a></li><li class="breadcrumb-item"><a href="./create_sheets.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Create New Files and Folders</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -205,7 +176,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./when_loops.html" class="sidebar-item-text sidebar-link active">
+  <a href="./when_loops.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></span></a>
   </div>
 </li>
@@ -293,7 +264,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./create_sheets.html" class="sidebar-item-text sidebar-link">
+  <a href="./create_sheets.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Create New Files and Folders</span></span></a>
   </div>
 </li>
@@ -322,9 +293,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_iteration.html">Iteration: Loops, Functions, and the purr package</a></li><li class="breadcrumb-item"><a href="./when_loops.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./account_setup.html">Data Pipelines with Google Drive and Google Sheets</a></li><li class="breadcrumb-item"><a href="./create_sheets.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Create New Files and Folders</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Create New Files and Folders</span></h1>
 </div>
 
 
@@ -341,46 +312,302 @@ window.Quarto = {
 </header>
 
 
-<p>Now you may have often heard that you should avoid using for loops because they are slow. This isn’t strictly true; it depends how you write them. It has to do with how R uses your computer’s working memory, but the details are probably not worth getting into. Generally if you avoid the “common pitfalls” linked in the last section, you should be writing loops that are plenty fast. Also, in my personal opinion, I’m not sure how important speed is for most of our work - since we’re not developing software or data pipelines for business purposes, we are more interested in the end result and less interested in how long it took our program to get there. All this to say, don’t worry about the for loops you use being inefficient. A good guideline might be: do what you need to do now to get your results, and maybe do it a little better next time.</p>
-<p>However, there are other reasons not to use for loops that I think are more compelling, and we’ll talk about them when we talk about functions. But sometimes you just have to use loops. How can you know?</p>
-<p>Basically -</p>
-<p><strong>You need to use a loop when the process of one iteration depends on the outcome of previous iteration/s.</strong></p>
-<p>The while loop we used in the last section is technically an example of a case where a loop is necessary, but let’s look at another clearer ecological example: discrete population growth.</p>
-<p>Let’s use one common formulation of discrete logistic growth:</p>
-<p><span class="math display">\[
-N_{t+1} = N_t *e^{r(\frac{K-N_t}{K})}
-\]</span></p>
-<p>Where N is population size, r is growth rate, and K is carrying capacity.</p>
-<p>As you can see, that pesky N<sub>t</sub> is involved in the calculation of N<sub>t+1</sub>, or in other words, the process of calculation for one iteration/timestep depends on the outcome of the previous iteration/timestep. Thus we need to use a loop:</p>
+<p>So we can look at the ids and metadata of our files, but that’s not very fun.</p>
+<p>Let’s create some files!</p>
+<p>Sometimes, when you have a research project, you want to create several datasheets with the same template for data entry. On paper, you just print out a bunch of copies. But if you are entering your data electronically with Google Drive, you might want to make several files, for the sake of organization and navigation within a given file. Let’s say we are going to do just that!</p>
+<p>First, let’s create a folder:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## set growth rate, r, and carrying capacity K</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## set number of timesteps, t, and preallocate population size vector, N</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"numeric"</span>, <span class="at">length =</span> t)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>N[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="do">## loop through timesteps and calculate population size</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="do">## note: we are considering t = 1 as initial pop size</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(t <span class="sc">-</span> <span class="dv">1</span>)) {</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  N[i<span class="sc">+</span><span class="dv">1</span>]  <span class="ot">=</span> N[i] <span class="sc">*</span> <span class="fu">exp</span>(r <span class="sc">*</span> ((K<span class="sc">-</span>N[i])<span class="sc">/</span>K))</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="do">## plot the output                                 </span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>t, N, <span class="at">type =</span> <span class="st">"o"</span>, <span class="at">xlab =</span> <span class="st">"t"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="when_loops_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## name is required</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also specify a path to a folder as an id, one-row dribble, or character path (I use "~/" to specify home directory)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also tell whether to overwrite (NA means create even if it duplicates)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_mkdir</span>(<span class="at">name =</span> <span class="st">"my_new_folder"</span>, <span class="at">path =</span> <span class="st">"~/"</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>! Using an auto-discovered, cached token.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  To suppress this message, modify your code or options to clearly consent to
+  the use of a cached token.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  See gargle's "Non-interactive auth" vignette for more details:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  &lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ The googledrive package is using a cached token for 'wojan002@umn.edu'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Created Drive file:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'my_new_folder' &lt;id: 1IKCX4jvljOteHvZR-5Rdmfp9dbiFzb2x&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>With MIME type:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'application/vnd.google-apps.folder'</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## you can also save its ID while creating</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="do">## here I am overwriting what I created, but I need to specify the path</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="do">## to my home directory for the dribble conversion</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>my_new_folder_id <span class="ot">&lt;-</span> <span class="fu">drive_mkdir</span>(<span class="at">name =</span> <span class="st">"my_new_folder"</span>, <span class="at">path =</span> <span class="st">"~/"</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>File trashed:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'my_new_folder' &lt;id: 1IKCX4jvljOteHvZR-5Rdmfp9dbiFzb2x&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Created Drive file:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'my_new_folder' &lt;id: 1cwaFg-OSi9Xw5w9tHh3xbmiOseDAhtfT&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>With MIME type:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'application/vnd.google-apps.folder'</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## this way we can easily refer to it in future code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There are more arguments you can pass to the Google Drive API, e.g.&nbsp;setting permissions, but that gets more complicated (and I don’t know how!).</p>
+<p>You should see that folder in your home directory on your Drive now.</p>
+<p>Now we can fill it with new files!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## make a folder inside our new folder</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>subfolder_id <span class="ot">&lt;-</span> <span class="fu">drive_mkdir</span>(<span class="at">name =</span> <span class="st">"subfolder"</span>, <span class="at">path =</span> my_new_folder_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Created Drive file:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'subfolder' &lt;id: 1YAf44HNrAVPc7eHSmcD2pVAx1LPyrndy&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>With MIME type:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'application/vnd.google-apps.folder'</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## make a blank file inside our new folder</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sheet_template_id <span class="ot">&lt;-</span> <span class="fu">drive_create</span>(<span class="at">name =</span> <span class="st">"sheet_template"</span>, <span class="at">path =</span> my_new_folder_id,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">type =</span> <span class="st">"spreadsheet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Created Drive file:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'sheet_template' &lt;id: 1Oxp_zuoKdIvbf8Lj_Kn0904tAkWuVvn9FmrkedAJvfw&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>With MIME type:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'application/vnd.google-apps.spreadsheet'</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># other types include "documents" and "slides"</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="do">## upload a file to your new folder</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="do">## (file is included in this github repo)</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>upload_id <span class="ot">&lt;-</span> <span class="fu">drive_upload</span>(<span class="at">media =</span> <span class="st">"template.csv"</span>, <span class="at">path =</span> my_new_folder_id, <span class="at">name =</span> <span class="st">"sheet_upload"</span>, </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">type =</span> <span class="st">"spreadsheet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Local file:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'template.csv'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Uploaded into Drive file:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'sheet_upload' &lt;id: 1tWzvKCerQtARK6-zFQNsGq3a1_mPVhxU1brJ7dsdfyI&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>With MIME type:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'application/vnd.google-apps.spreadsheet'</code></pre>
 </div>
 </div>
+<p>“sheet_template” is a blank sheet, while “sheet_upload” is filled with what is written in the “template.csv”. We can look at that here:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">## read</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>template <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"template.csv"</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="do">## display</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>template</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   date site plot point temp value
+1    NA   NA    A     1   NA    NA
+2    NA   NA    A     2   NA    NA
+3    NA   NA    A     3   NA    NA
+4    NA   NA    A     4   NA    NA
+5    NA   NA    B     1   NA    NA
+6    NA   NA    B     2   NA    NA
+7    NA   NA    B     3   NA    NA
+8    NA   NA    B     4   NA    NA
+9    NA   NA    C     1   NA    NA
+10   NA   NA    C     2   NA    NA
+11   NA   NA    C     3   NA    NA
+12   NA   NA    C     4   NA    NA</code></pre>
 </div>
-<p>This relatively simple loop is what powers this web app:</p>
-<p><a href="https://cwojan.shinyapps.io/discrete_logistic_growth/" class="uri">https://cwojan.shinyapps.io/discrete_logistic_growth/</a></p>
-<p>Cool!</p>
+</div>
+<p>This is a generic example of some date you might want to record for several site and dates We could write this directly to the blank sheet we created, but assuming we didn’t have this csv, we can also create the same template in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="do">## create template as a data frame</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>manual_template <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">date =</span> <span class="cn">NA</span>,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">site =</span> <span class="cn">NA</span>,</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>), <span class="at">each =</span> <span class="dv">4</span>),</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">point =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">3</span>),</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">temp =</span> <span class="cn">NA</span>,</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="cn">NA</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="do">## now we can write that data frame to the empty sheet we created above</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="do">## note: up to this point the functions have been from googledrive, </span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="do">## writing and reading sheets is done with googlesheets4</span></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="do">## use sheet_write to write to sheets (you can specify tab with the "sheet" argument by name or number) </span></span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="fu">sheet_write</span>(<span class="at">data =</span> manual_template, <span class="at">ss =</span> sheet_template_id, <span class="at">sheet =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>! Using an auto-discovered, cached token.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  To suppress this message, modify your code or options to clearly consent to
+  the use of a cached token.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  See gargle's "Non-interactive auth" vignette for more details:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  &lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ The googlesheets4 package is using a cached token for 'wojan002@umn.edu'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ Writing to "sheet_template".</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ Writing to sheet 'Sheet1'.</code></pre>
+</div>
+</div>
+<p>Now the two sheets in your folder should match, but the one you wrote to with <code>sheet_write</code> doesn’t have any cells around the data frame itself.</p>
+<p>The next step would be to create a sheet for each of several sites. There are several ways to do this. You could copy your template with <code>googledrive::drive_cp()</code> and then write a new data frame to each new copy with <code>googlesheets4::sheet_write</code> as above. You could also use googlesheet4’s built-in sheet creation function, <code>gs4_create</code>, but then you’ll have to move them with <code>googledrive::drive_mv</code>. Either way it’s a two-step process; here we will try out those new functions:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="do">## first create a folder to hold the sheets</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>site_sheets_id <span class="ot">&lt;-</span> <span class="fu">drive_mkdir</span>(<span class="at">name =</span> <span class="st">"site_sheets"</span>, <span class="at">path =</span> my_new_folder_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Created Drive file:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'site_sheets' &lt;id: 1gV5c5iVHFr5bRdaqYEYFjE3Xib7EyX5r&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>With MIME type:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'application/vnd.google-apps.folder'</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="do">## let's make some arbitrary sites</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>sites <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"S1"</span>, <span class="st">"S2"</span>, <span class="st">"S3"</span>, <span class="st">"S4"</span>, <span class="st">"S5"</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="do">## create an empty list to write sheet ids</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>new_sheets <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="do">## loop over each site</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(sites)){</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> manual_template <span class="co"># grab template</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>site <span class="ot">&lt;-</span> sites[i] <span class="co"># set site to current label</span></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>  sheet_name <span class="ot">&lt;-</span> <span class="fu">paste0</span>(sites[i],<span class="st">"_data"</span>)</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  <span class="do">## create new sheet and save id to vector</span></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>  temp_id <span class="ot">&lt;-</span> <span class="fu">gs4_create</span>(<span class="at">name =</span> sheet_name, <span class="at">sheets =</span> df)</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>  new_sheets <span class="ot">&lt;-</span> <span class="fu">c</span>(new_sheets, temp_id)</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="do">## move sheet to folder</span></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drive_mv</span>(<span class="at">file =</span> <span class="fu">as_id</span>(new_sheets[[i]]), <span class="at">path =</span> site_sheets_id)</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ Creating new Sheet: "S1_data".</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Original file:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'S1_data' &lt;id: 1lLGKSCulRUrBHCVoM5bn0_t9AyIP-DOegMOsxbvs6Po&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Has been moved:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'site_sheets/S1_data' &lt;id: 1lLGKSCulRUrBHCVoM5bn0_t9AyIP-DOegMOsxbvs6Po&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ Creating new Sheet: "S2_data".</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Original file:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'S2_data' &lt;id: 1OFqpJwD5y5ZUP4BZsXw-EirA5mD0u6rzXkT43JIIcQ4&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Has been moved:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'site_sheets/S2_data' &lt;id: 1OFqpJwD5y5ZUP4BZsXw-EirA5mD0u6rzXkT43JIIcQ4&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ Creating new Sheet: "S3_data".</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Original file:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'S3_data' &lt;id: 1wF0CoBt8QF0TuTTV0tU5h45y0HCO9BUzi3IJoYER5f4&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Has been moved:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'site_sheets/S3_data' &lt;id: 1wF0CoBt8QF0TuTTV0tU5h45y0HCO9BUzi3IJoYER5f4&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ Creating new Sheet: "S4_data".</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Original file:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'S4_data' &lt;id: 1MJ9isVIMKB3TpD0r4oUgg8XJsoQrevkh6p94YyZTpgY&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Has been moved:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'site_sheets/S4_data' &lt;id: 1MJ9isVIMKB3TpD0r4oUgg8XJsoQrevkh6p94YyZTpgY&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ Creating new Sheet: "S5_data".</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Original file:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'S5_data' &lt;id: 18s1GMtNJD0gtfttoXHY6dlFRrNAZ3VoAQwP8g0arcf4&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Has been moved:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'site_sheets/S5_data' &lt;id: 18s1GMtNJD0gtfttoXHY6dlFRrNAZ3VoAQwP8g0arcf4&gt;</code></pre>
+</div>
+</div>
+<p>Hooray! Now you have a set of Google Sheets following that template! Of course, manually doing this would have been faster than writing this script, but that comparison quickly becomes favorable for coding when the number of datasheets grows or the number of time you need to create a new set of datasheets.</p>
+<p>Note: for many of these processes I might recommend writing functions and using functionals like the <code>purrr::map</code> family or base R’s <code>apply</code> family, but loops work fine too.</p>
+<p>In any case, the next step is to enter data, I suppose!</p>
 
 
 
@@ -948,13 +1175,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./loop_types.html" class="pagination-link" aria-label="Types of Loops">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of Loops</span></span>
+      <a href="./access_files.html" class="pagination-link" aria-label="Access Your Files">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Access Your Files</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./functions.html" class="pagination-link" aria-label="Functions">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./backup_data.html" class="pagination-link" aria-label="Backup Your Data">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Backup Your Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

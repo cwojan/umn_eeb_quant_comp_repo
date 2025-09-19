@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; When to Loop? – UMN EEB Quant/Comp Repo</title>
+<title>15&nbsp; Backup Your Data – UMN EEB Quant/Comp Repo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./functions.html" rel="next">
-<link href="./loop_types.html" rel="prev">
+<link href="./read_sheets.html" rel="next">
+<link href="./create_sheets.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -105,35 +105,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -146,7 +117,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_iteration.html">Iteration: Loops, Functions, and the purr package</a></li><li class="breadcrumb-item"><a href="./when_loops.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./account_setup.html">Data Pipelines with Google Drive and Google Sheets</a></li><li class="breadcrumb-item"><a href="./backup_data.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Backup Your Data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -205,7 +176,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./when_loops.html" class="sidebar-item-text sidebar-link active">
+  <a href="./when_loops.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></span></a>
   </div>
 </li>
@@ -299,7 +270,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./backup_data.html" class="sidebar-item-text sidebar-link">
+  <a href="./backup_data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Backup Your Data</span></span></a>
   </div>
 </li>
@@ -322,9 +293,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_iteration.html">Iteration: Loops, Functions, and the purr package</a></li><li class="breadcrumb-item"><a href="./when_loops.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./account_setup.html">Data Pipelines with Google Drive and Google Sheets</a></li><li class="breadcrumb-item"><a href="./backup_data.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Backup Your Data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Backup Your Data</span></h1>
 </div>
 
 
@@ -341,46 +312,62 @@ window.Quarto = {
 </header>
 
 
-<p>Now you may have often heard that you should avoid using for loops because they are slow. This isn’t strictly true; it depends how you write them. It has to do with how R uses your computer’s working memory, but the details are probably not worth getting into. Generally if you avoid the “common pitfalls” linked in the last section, you should be writing loops that are plenty fast. Also, in my personal opinion, I’m not sure how important speed is for most of our work - since we’re not developing software or data pipelines for business purposes, we are more interested in the end result and less interested in how long it took our program to get there. All this to say, don’t worry about the for loops you use being inefficient. A good guideline might be: do what you need to do now to get your results, and maybe do it a little better next time.</p>
-<p>However, there are other reasons not to use for loops that I think are more compelling, and we’ll talk about them when we talk about functions. But sometimes you just have to use loops. How can you know?</p>
-<p>Basically -</p>
-<p><strong>You need to use a loop when the process of one iteration depends on the outcome of previous iteration/s.</strong></p>
-<p>The while loop we used in the last section is technically an example of a case where a loop is necessary, but let’s look at another clearer ecological example: discrete population growth.</p>
-<p>Let’s use one common formulation of discrete logistic growth:</p>
-<p><span class="math display">\[
-N_{t+1} = N_t *e^{r(\frac{K-N_t}{K})}
-\]</span></p>
-<p>Where N is population size, r is growth rate, and K is carrying capacity.</p>
-<p>As you can see, that pesky N<sub>t</sub> is involved in the calculation of N<sub>t+1</sub>, or in other words, the process of calculation for one iteration/timestep depends on the outcome of the previous iteration/timestep. Thus we need to use a loop:</p>
+<p>So let’s say you’ve entered some data.</p>
+<p>The files are there on Google’s cloud service, to be accessed from any local device. You can also download them manually. Of course, you may be in the middle of data collection, so the files in your folders are subject to change.</p>
+<p>In the case of a blank spreadsheet you created based off of a template, Google will track changes in the version history, but Google is not clear on how long it will keep those changes accessible, or when/if nearby changes are “collapsed” into versions that summarize your versions. This is no good for being able to look back, or general scientific data management principles right?</p>
+<p>Well, you can set up a script to download a snapshot of your data to your computer whenever you run it!</p>
+<p>This actually will require some functions to manipulate files on your own computer, so let’s go over those first:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## set growth rate, r, and carrying capacity K</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## set number of timesteps, t, and preallocate population size vector, N</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"numeric"</span>, <span class="at">length =</span> t)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>N[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="do">## loop through timesteps and calculate population size</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="do">## note: we are considering t = 1 as initial pop size</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(t <span class="sc">-</span> <span class="dv">1</span>)) {</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  N[i<span class="sc">+</span><span class="dv">1</span>]  <span class="ot">=</span> N[i] <span class="sc">*</span> <span class="fu">exp</span>(r <span class="sc">*</span> ((K<span class="sc">-</span>N[i])<span class="sc">/</span>K))</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="do">## plot the output                                 </span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>t, N, <span class="at">type =</span> <span class="st">"o"</span>, <span class="at">xlab =</span> <span class="st">"t"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="when_loops_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## First you want to save a directory where you want to store your backups</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>upper_dir <span class="ot">&lt;-</span> <span class="st">"~/Documents/UMN/data_backups/research_project_1"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## and then set your R session to that directory</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(upper_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Next, we will create a folder to hold today’s backups:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## save current date</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>cur_date <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="do">## create a name for the folder with the date</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>dir_name <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"project1_data_backup_"</span>, cur_date)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="do">## create a folder with that name in the working directory</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(dir_name)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="do">## now enter backup directory</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="fu">paste0</span>(upper_dir, <span class="st">"/"</span>, dir_name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Now that we have our file directories set up, we can download our files. But first we need to identify them:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## of course we need to know where to find our files</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data_folder <span class="ot">&lt;-</span> <span class="fu">drive_get</span>(<span class="st">"[your folder URL or id here]"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="do">## and then we want the ids of the data within (spreadsheets)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="do">## recursive = TRUE returns data in subfolders</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data_ids <span class="ot">&lt;-</span> <span class="fu">drive_ls</span>(data_folder, <span class="at">type =</span> <span class="st">"spreadsheet"</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This relatively simple loop is what powers this web app:</p>
-<p><a href="https://cwojan.shinyapps.io/discrete_logistic_growth/" class="uri">https://cwojan.shinyapps.io/discrete_logistic_growth/</a></p>
-<p>Cool!</p>
+<p>The <code>data_ids</code> object will be a dribble, with and <code>id</code> column storing the drive ids. We can call it sequentially to download each file to our current working directory (which is our newly created subfolder).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## download in a loop</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> data_ids<span class="sc">$</span>id) {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drive_download</span>(<span class="at">file =</span> <span class="fu">as_id</span>(i), <span class="at">type =</span> <span class="st">"csv"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="do">## you could also download with walk from purrr</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">walk</span>(data_ids<span class="sc">$</span>id, <span class="sc">~</span> <span class="fu">drive_download</span>(<span class="at">file =</span> <span class="fu">as_id</span>(.x), <span class="at">type =</span> <span class="st">"csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finally, since this is a backup, we can compress the folder to save storage space:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## move up a directory</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(upper_dir)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">## zip backup folder</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">zip</span>(<span class="at">zipfile =</span> dir_name, <span class="at">files =</span> dir_name)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="do">## optionally remove the unzipped folder</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(dir_name, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can do this as often as you want; I do it at the end of every data collection day. But if you do it more than daily, you’ll need to create a more detailed folder name than just the date - you could add a full timestamp with <code>Sys.time()</code>.</p>
 
 
 
@@ -948,13 +935,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./loop_types.html" class="pagination-link" aria-label="Types of Loops">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of Loops</span></span>
+      <a href="./create_sheets.html" class="pagination-link" aria-label="Create New Files and Folders">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Create New Files and Folders</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./functions.html" class="pagination-link" aria-label="Functions">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./read_sheets.html" class="pagination-link" aria-label="Read Your Data">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Read Your Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

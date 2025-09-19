@@ -1,0 +1,58 @@
+---
+title: "Access Your Files"
+---
+
+```{r}
+#| include: false
+
+library(googledrive)
+library(googlesheets4)
+```
+
+Now that you can "talk" between your R session on your local computer and your Google Drive via the internet, we need to go over how to access directories and files on your Drive, or the language with you can do that talking.
+
+You are likely familiar with how files are stored on your computer with human-readable filepaths, like so:
+
+"documents/main_folder/sub_folder/my_document.doc"
+
+Google Drive organizes files and folder similarly, but not the same. Importantly, you can name files and folder on Google Drive with the exact same name, whereas you cannot on your own computer's operating system. In addition, multiple filepaths can resolve to the same object with how Drive's are organized. This generally means that using file paths is a bit wonky with these packages.
+
+Thus, to work with Google files programmatically in R, we will want to rely on the "drive_id"s, which are a sequence of letters and numbers unique for each item.
+
+You can find the id of a Drive object in its URL - it's the long sequence at the end. googledrive's `as_id()` can isolate it for you, as well as create a special "drive_id" character object for use with googledrive functions.
+
+I do so here with a folder I made manually on my internet browser called "r_google_demo":
+
+```{r}
+
+as_id("https://drive.google.com/drive/u/0/folders/1NkwtKkDdxIb7h0LzUBkWD71nG_1eW3f_")
+
+## I can also save it as an object
+r_google_demo_id <- as_id("https://drive.google.com/drive/u/0/folders/1NkwtKkDdxIb7h0LzUBkWD71nG_1eW3f_") 
+
+```
+
+There are many things you can do with a drive_id, such as...
+
+```{r}
+
+## look at its metadata
+## drive_get() also takes full URLs, as it silently uses as_id()
+drive_get(r_google_demo_id)
+
+## list what is inside
+drive_ls(r_google_demo_id)
+
+```
+
+Both of these functions return "dribbles" which are a type of data frame (more precisely, a tidyverse tibble) that contain the name, id, and metadata (in list form) of Drive objects. That metadata may be useful for more advanced processes.
+
+It should be noted that `drive_ls()` can be used without an argument to list out a full drive, but in the case of UMN accounts, this also includes everything that is shared with you, so the function will take a tremendously long time to return all those objects. This also applies to the `drive_find()` function, which seeks objects based on a character string; it will search everything you have access to.
+
+If you want to `drive_find()` within specific folder of yours, you'll need to learn query strings for the Google API here (I have not!):
+
+<https://developers.google.com/workspace/drive/api/guides/search-files>
+
+However, we can still import certain files into R based on criteria that we define using the `drive_ls()` function, as we will see later.
+
+But first we will see how to create files, particularly sheets for data entry.

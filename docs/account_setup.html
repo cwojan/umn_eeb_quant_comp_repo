@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; When to Loop? – UMN EEB Quant/Comp Repo</title>
+<title>12&nbsp; Intro, Packages, and Account Setup – UMN EEB Quant/Comp Repo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./functions.html" rel="next">
-<link href="./loop_types.html" rel="prev">
+<link href="./access_files.html" rel="next">
+<link href="./copilot.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -105,35 +105,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -146,7 +117,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_iteration.html">Iteration: Loops, Functions, and the purr package</a></li><li class="breadcrumb-item"><a href="./when_loops.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./account_setup.html">Data Pipelines with Google Drive and Google Sheets</a></li><li class="breadcrumb-item"><a href="./account_setup.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Intro, Packages, and Account Setup</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -205,7 +176,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./when_loops.html" class="sidebar-item-text sidebar-link active">
+  <a href="./when_loops.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></span></a>
   </div>
 </li>
@@ -281,7 +252,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./account_setup.html" class="sidebar-item-text sidebar-link">
+  <a href="./account_setup.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Intro, Packages, and Account Setup</span></span></a>
   </div>
 </li>
@@ -322,9 +293,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_iteration.html">Iteration: Loops, Functions, and the purr package</a></li><li class="breadcrumb-item"><a href="./when_loops.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./account_setup.html">Data Pipelines with Google Drive and Google Sheets</a></li><li class="breadcrumb-item"><a href="./account_setup.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Intro, Packages, and Account Setup</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Intro, Packages, and Account Setup</span></h1>
 </div>
 
 
@@ -341,46 +312,48 @@ window.Quarto = {
 </header>
 
 
-<p>Now you may have often heard that you should avoid using for loops because they are slow. This isn’t strictly true; it depends how you write them. It has to do with how R uses your computer’s working memory, but the details are probably not worth getting into. Generally if you avoid the “common pitfalls” linked in the last section, you should be writing loops that are plenty fast. Also, in my personal opinion, I’m not sure how important speed is for most of our work - since we’re not developing software or data pipelines for business purposes, we are more interested in the end result and less interested in how long it took our program to get there. All this to say, don’t worry about the for loops you use being inefficient. A good guideline might be: do what you need to do now to get your results, and maybe do it a little better next time.</p>
-<p>However, there are other reasons not to use for loops that I think are more compelling, and we’ll talk about them when we talk about functions. But sometimes you just have to use loops. How can you know?</p>
-<p>Basically -</p>
-<p><strong>You need to use a loop when the process of one iteration depends on the outcome of previous iteration/s.</strong></p>
-<p>The while loop we used in the last section is technically an example of a case where a loop is necessary, but let’s look at another clearer ecological example: discrete population growth.</p>
-<p>Let’s use one common formulation of discrete logistic growth:</p>
-<p><span class="math display">\[
-N_{t+1} = N_t *e^{r(\frac{K-N_t}{K})}
-\]</span></p>
-<p>Where N is population size, r is growth rate, and K is carrying capacity.</p>
-<p>As you can see, that pesky N<sub>t</sub> is involved in the calculation of N<sub>t+1</sub>, or in other words, the process of calculation for one iteration/timestep depends on the outcome of the previous iteration/timestep. Thus we need to use a loop:</p>
+<p>The goal of this section / workshop is to go over how one can develop a data pipeline with Google Drive where datasheet creation and importing is done entirely in R, without having to manually create Google Sheets or manually download them. We’ll also go over how to manually backup your files.</p>
+<p>First, we need to install and call the requisite packages: <code>googledrive</code> and <code>googlesheets4</code>. Overall <code>googledrive</code> is for finding, creating, moving, copying, and deleting files and folders, while <code>googlesheets4</code> is for reading and writing Google Sheets directly to and from data in your R environment.</p>
+<p>Comprehensive info on these packages can be found here: - <a href="https://googlesheets4.tidyverse.org/" class="uri">https://googlesheets4.tidyverse.org/</a> - <a href="https://googledrive.tidyverse.org/" class="uri">https://googledrive.tidyverse.org/</a></p>
+<p>To install, you can copy the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## set growth rate, r, and carrying capacity K</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## set number of timesteps, t, and preallocate population size vector, N</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"numeric"</span>, <span class="at">length =</span> t)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>N[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="do">## loop through timesteps and calculate population size</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="do">## note: we are considering t = 1 as initial pop size</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(t <span class="sc">-</span> <span class="dv">1</span>)) {</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  N[i<span class="sc">+</span><span class="dv">1</span>]  <span class="ot">=</span> N[i] <span class="sc">*</span> <span class="fu">exp</span>(r <span class="sc">*</span> ((K<span class="sc">-</span>N[i])<span class="sc">/</span>K))</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="do">## plot the output                                 </span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>t, N, <span class="at">type =</span> <span class="st">"o"</span>, <span class="at">xlab =</span> <span class="st">"t"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="when_loops_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"googledrive"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"googlesheets4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And load them:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googledrive)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googlesheets4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'googlesheets4'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:googledrive':
+
+    request_generate, request_make</code></pre>
 </div>
 </div>
+<p>With these packages loaded, you’ll first need to authorize them with your Google account, such that they can access your drive. You need to authorize both packages separately. Running the functions with no arguments will prompt you to go to your default internet browser to enter your credentials (you may need to make a number selection in the R console).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_auth</span>()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gs4_auth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This relatively simple loop is what powers this web app:</p>
-<p><a href="https://cwojan.shinyapps.io/discrete_logistic_growth/" class="uri">https://cwojan.shinyapps.io/discrete_logistic_growth/</a></p>
-<p>Cool!</p>
+<p>Your credentials will be stored in a cache locally on your computer, but not within any given R project folder, so that they can be pulled in any R session. The particulars of this storage process are managed by the “gargle” package, which is a dependency of the google packages. You can find where your credentials are cached with this function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gargle<span class="sc">::</span><span class="fu">gargle_oauth_sitrep</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You’ll also want to note that when you start running Drive and Sheets functions continually, you will often need to select your authorization or refresh a “stale OAuth token”, which usually just involves selecting a number in the R console.</p>
+<p>If that doesn’t work, you can just deauthorize and reauthorize the packages, which should fix things (and edit what’s in your gargle cache):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_deauth</span>()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gs4_deauth</span>()</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_auth</span>()</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gs4_auth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>With this complete, you’ll be able to create and read files in your Google Drive completely through R scripts!</p>
 
 
 
@@ -948,13 +921,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./loop_types.html" class="pagination-link" aria-label="Types of Loops">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of Loops</span></span>
+      <a href="./copilot.html" class="pagination-link" aria-label="GitHub Copilot">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">GitHub Copilot</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./functions.html" class="pagination-link" aria-label="Functions">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./access_files.html" class="pagination-link" aria-label="Access Your Files">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Access Your Files</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

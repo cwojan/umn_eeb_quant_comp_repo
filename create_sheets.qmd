@@ -1,0 +1,127 @@
+---
+title: "Create New Files and Folders"
+---
+
+```{r}
+#| include: false
+
+library(googledrive)
+library(googlesheets4)
+```
+
+So we can look at the ids and metadata of our files, but that's not very fun.
+
+Let's create some files!
+
+Sometimes, when you have a research project, you want to create several datasheets with the same template for data entry. On paper, you just print out a bunch of copies. But if you are entering your data electronically with Google Drive, you might want to make several files, for the sake of organization and navigation within a given file. Let's say we are going to do just that!
+
+First, let's create a folder:
+
+```{r}
+
+## name is required
+# you can also specify a path to a folder as an id, one-row dribble, or character path (I use "~/" to specify home directory)
+# you can also tell whether to overwrite (NA means create even if it duplicates)
+drive_mkdir(name = "my_new_folder", path = "~/", overwrite = TRUE)
+
+## you can also save its ID while creating
+## here I am overwriting what I created, but I need to specify the path
+## to my home directory for the dribble conversion
+my_new_folder_id <- drive_mkdir(name = "my_new_folder", path = "~/", overwrite = TRUE)
+
+## this way we can easily refer to it in future code
+
+```
+
+There are more arguments you can pass to the Google Drive API, e.g. setting permissions, but that gets more complicated (and I don't know how!).
+
+You should see that folder in your home directory on your Drive now.
+
+Now we can fill it with new files!
+
+```{r}
+
+## make a folder inside our new folder
+subfolder_id <- drive_mkdir(name = "subfolder", path = my_new_folder_id)
+
+## make a blank file inside our new folder
+sheet_template_id <- drive_create(name = "sheet_template", path = my_new_folder_id,
+                               type = "spreadsheet")
+
+# other types include "documents" and "slides"
+
+## upload a file to your new folder
+## (file is included in this github repo)
+upload_id <- drive_upload(media = "template.csv", path = my_new_folder_id, name = "sheet_upload", 
+                          type = "spreadsheet")
+```
+
+"sheet_template" is a blank sheet, while "sheet_upload" is filled with what is written in the "template.csv". We can look at that here:
+
+```{r}
+
+## read
+template <- read.csv("template.csv")
+
+## display
+template
+
+```
+
+This is a generic example of some date you might want to record for several site and dates We could write this directly to the blank sheet we created, but assuming we didn't have this csv, we can also create the same template in R:
+
+```{r}
+
+## create template as a data frame
+manual_template <- data.frame(
+  date = NA,
+  site = NA,
+  plot = rep(c("A","B","C"), each = 4),
+  point = rep(1:4, 3),
+  temp = NA,
+  value = NA
+)
+
+## now we can write that data frame to the empty sheet we created above
+## note: up to this point the functions have been from googledrive, 
+## writing and reading sheets is done with googlesheets4
+
+## use sheet_write to write to sheets (you can specify tab with the "sheet" argument by name or number) 
+sheet_write(data = manual_template, ss = sheet_template_id, sheet = 1)
+
+```
+
+Now the two sheets in your folder should match, but the one you wrote to with `sheet_write` doesn't have any cells around the data frame itself.
+
+The next step would be to create a sheet for each of several sites. There are several ways to do this. You could copy your template with `googledrive::drive_cp()` and then write a new data frame to each new copy with `googlesheets4::sheet_write` as above. You could also use googlesheet4's built-in sheet creation function, `gs4_create`, but then you'll have to move them with `googledrive::drive_mv`. Either way it's a two-step process; here we will try out those new functions:
+
+```{r}
+
+## first create a folder to hold the sheets
+site_sheets_id <- drive_mkdir(name = "site_sheets", path = my_new_folder_id)
+
+## let's make some arbitrary sites
+sites <- c("S1", "S2", "S3", "S4", "S5")
+
+## create an empty list to write sheet ids
+new_sheets <- list()
+
+## loop over each site
+for (i in 1:length(sites)){
+  df <- manual_template # grab template
+  df$site <- sites[i] # set site to current label
+  sheet_name <- paste0(sites[i],"_data")
+  ## create new sheet and save id to vector
+  temp_id <- gs4_create(name = sheet_name, sheets = df)
+  new_sheets <- c(new_sheets, temp_id)
+  ## move sheet to folder
+  drive_mv(file = as_id(new_sheets[[i]]), path = site_sheets_id)
+}
+
+```
+
+Hooray! Now you have a set of Google Sheets following that template! Of course, manually doing this would have been faster than writing this script, but that comparison quickly becomes favorable for coding when the number of datasheets grows or the number of time you need to create a new set of datasheets.
+
+Note: for many of these processes I might recommend writing functions and using functionals like the `purrr::map` family or base R's `apply` family, but loops work fine too.
+
+In any case, the next step is to enter data, I suppose!

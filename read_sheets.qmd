@@ -1,0 +1,53 @@
+---
+title: "Read Your Data"
+---
+
+```{r}
+#| include: false
+
+library(googledrive)
+library(googlesheets4)
+```
+
+Now for possibly the most useful part - reading Google Sheets directly into R. For some this may be the only relevant part if you prefer to manually work with your sheets on Google Drive.
+
+Really, the only function you need to learn here is `googlesheets4::read_sheet()`, and it functions very similarly to base R's `read.csv()`, and `read_csv()` from the tidyverse. As such, it also has arguments for setting column types (or guessing them), how to read missing values, skipping rows, etc.
+
+Anyway, now that you know all about drive ids and such, it'll be easier to use.
+
+Similar to backing up your data, you'll need to get the drive id of where your data is stored. You can consider saving the URL/id to a file in your project directory (which you then read into your environment) if you don't want to hard code it into your script, but the only difference that makes is that it is then "secret" if you upload your script to github.
+
+Anyway, the general steps are:
+
+```{r}
+#| eval: false
+
+## save the id as an id object, simii
+data_folder <- drive_get("[your data folder URL or id here]") 
+
+## now get your files
+data_ids <- drive_ls(data_folder, type = "spreadsheet", recursive = TRUE)
+
+```
+
+Now instead of downloading these files to you computer, we're going to read them into your environment. Again you can do it with a functional like `purrr::map()`, or by looping. Here is a simple looping approach:
+
+```{r}
+#| eval: false
+
+## create empty data.frame for data
+df <- data.frame()
+
+## run through each data id
+## note: this only works if the data have the same columns!!
+for(i in data_ids$id) {
+  new_df <- read_sheet(ss = i)
+  df <- rbind(df, new_df)
+}
+```
+
+Now, your data is in R for you to manipulate as you wish!
+
+Obviously this is a very simple case, and your data may be a lot more complicated. With the functions described in this chapter overall, you should be able to modify things to your specifications. However, in some complex cases you may want to explore reading certain data sheets into a "list column" in a tidyverse tibble, that you can unnest and renest as needed. I personally do this, but it is likely unnecessary for many cases.
+
+After you have processed your data, you could even upload it to your Google Drive using the methods in the "Create New Files and Folders" section! =)

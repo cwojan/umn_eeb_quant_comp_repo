@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,12 +71,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-b7c2d8834e08b04a63bb76a724ffbcac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-c1966a8c70583a3816b1e3a216c1caf1.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -241,6 +241,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data Pipelines with Google Drive and Google Sheets</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./account_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Intro, Packages, and Account Setup</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./access_files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Access Your Files</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./create_sheets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Create New Files and Folders</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./backup_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Backup Your Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./read_sheets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Read Your Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -345,13 +386,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     Welch Two Sample t-test
 
 data:  plant_data[, i] by plant_data[, "treatment"]
-t = 8.3271, df = 57.447, p-value = 1.863e-11
+t = 7.8682, df = 57.708, p-value = 1.052e-10
 alternative hypothesis: true difference in means between group control and group drought is not equal to 0
 95 percent confidence interval:
- 3.395754 5.545546
+ 2.852358 4.799160
 sample estimates:
 mean in group control mean in group drought 
-            12.009526              7.538876 
+            12.047247              8.221488 
 
 
 $dry_biomass_g
@@ -359,13 +400,13 @@ $dry_biomass_g
     Welch Two Sample t-test
 
 data:  plant_data[, i] by plant_data[, "treatment"]
-t = 5.8221, df = 54.307, p-value = 3.23e-07
+t = 5.5734, df = 53.756, p-value = 8.253e-07
 alternative hypothesis: true difference in means between group control and group drought is not equal to 0
 95 percent confidence interval:
-  6.622067 13.576732
+  5.834435 12.391287
 sample estimates:
 mean in group control mean in group drought 
-             49.04583              38.94643 
+             50.37060              41.25774 
 
 
 $seed_mass_mg
@@ -373,13 +414,13 @@ $seed_mass_mg
     Welch Two Sample t-test
 
 data:  plant_data[, i] by plant_data[, "treatment"]
-t = 11.04, df = 57.782, p-value = 7.359e-16
+t = 11.265, df = 57.946, p-value = 3.166e-16
 alternative hypothesis: true difference in means between group control and group drought is not equal to 0
 95 percent confidence interval:
-  7.956081 11.480603
+  8.400055 12.030443
 sample estimates:
 mean in group control mean in group drought 
-             29.30428              19.58594 </code></pre>
+             30.80458              20.58934 </code></pre>
 </div>
 </div>
 <p>When you are writing a for loop (especially ones more complex than the above), it can be helpful to first develop the code within the loop to more easily debug it. For example:</p>
@@ -395,13 +436,13 @@ mean in group control mean in group drought
     Welch Two Sample t-test
 
 data:  plant_data[, i] by plant_data[, "treatment"]
-t = 8.3271, df = 57.447, p-value = 1.863e-11
+t = 7.8682, df = 57.708, p-value = 1.052e-10
 alternative hypothesis: true difference in means between group control and group drought is not equal to 0
 95 percent confidence interval:
- 3.395754 5.545546
+ 2.852358 4.799160
 sample estimates:
 mean in group control mean in group drought 
-            12.009526              7.538876 </code></pre>
+            12.047247              8.221488 </code></pre>
 </div>
 </div>
 <p>This can be helpful because R, like most programming languages, is very particular about syntax. If you had tried to use the $ operator to select columns, you would have gotten an error:</p>
@@ -711,8 +752,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -823,7 +862,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

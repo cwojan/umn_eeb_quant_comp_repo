@@ -23,6 +23,13 @@ book:
         - organizing_repositories.qmd
         - building_webpages.qmd
         - copilot.qmd
+    - part: Data Pipelines with Google Drive and Google Sheets
+      chapters:
+        - account_setup.qmd
+        - access_files.qmd
+        - create_sheets.qmd
+        - backup_data.qmd
+        - read_sheets.qmd
 
 bibliography: references.bib
 

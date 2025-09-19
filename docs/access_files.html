@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; When to Loop? – UMN EEB Quant/Comp Repo</title>
+<title>13&nbsp; Access Your Files – UMN EEB Quant/Comp Repo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./functions.html" rel="next">
-<link href="./loop_types.html" rel="prev">
+<link href="./create_sheets.html" rel="next">
+<link href="./account_setup.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -105,35 +105,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -146,7 +117,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_iteration.html">Iteration: Loops, Functions, and the purr package</a></li><li class="breadcrumb-item"><a href="./when_loops.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./account_setup.html">Data Pipelines with Google Drive and Google Sheets</a></li><li class="breadcrumb-item"><a href="./access_files.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Access Your Files</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -205,7 +176,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./when_loops.html" class="sidebar-item-text sidebar-link active">
+  <a href="./when_loops.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></span></a>
   </div>
 </li>
@@ -287,7 +258,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./access_files.html" class="sidebar-item-text sidebar-link">
+  <a href="./access_files.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Access Your Files</span></span></a>
   </div>
 </li>
@@ -322,9 +293,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_iteration.html">Iteration: Loops, Functions, and the purr package</a></li><li class="breadcrumb-item"><a href="./when_loops.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./account_setup.html">Data Pipelines with Google Drive and Google Sheets</a></li><li class="breadcrumb-item"><a href="./access_files.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Access Your Files</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">When to Loop?</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Access Your Files</span></h1>
 </div>
 
 
@@ -341,46 +312,65 @@ window.Quarto = {
 </header>
 
 
-<p>Now you may have often heard that you should avoid using for loops because they are slow. This isn’t strictly true; it depends how you write them. It has to do with how R uses your computer’s working memory, but the details are probably not worth getting into. Generally if you avoid the “common pitfalls” linked in the last section, you should be writing loops that are plenty fast. Also, in my personal opinion, I’m not sure how important speed is for most of our work - since we’re not developing software or data pipelines for business purposes, we are more interested in the end result and less interested in how long it took our program to get there. All this to say, don’t worry about the for loops you use being inefficient. A good guideline might be: do what you need to do now to get your results, and maybe do it a little better next time.</p>
-<p>However, there are other reasons not to use for loops that I think are more compelling, and we’ll talk about them when we talk about functions. But sometimes you just have to use loops. How can you know?</p>
-<p>Basically -</p>
-<p><strong>You need to use a loop when the process of one iteration depends on the outcome of previous iteration/s.</strong></p>
-<p>The while loop we used in the last section is technically an example of a case where a loop is necessary, but let’s look at another clearer ecological example: discrete population growth.</p>
-<p>Let’s use one common formulation of discrete logistic growth:</p>
-<p><span class="math display">\[
-N_{t+1} = N_t *e^{r(\frac{K-N_t}{K})}
-\]</span></p>
-<p>Where N is population size, r is growth rate, and K is carrying capacity.</p>
-<p>As you can see, that pesky N<sub>t</sub> is involved in the calculation of N<sub>t+1</sub>, or in other words, the process of calculation for one iteration/timestep depends on the outcome of the previous iteration/timestep. Thus we need to use a loop:</p>
+<p>Now that you can “talk” between your R session on your local computer and your Google Drive via the internet, we need to go over how to access directories and files on your Drive, or the language with you can do that talking.</p>
+<p>You are likely familiar with how files are stored on your computer with human-readable filepaths, like so:</p>
+<p>“documents/main_folder/sub_folder/my_document.doc”</p>
+<p>Google Drive organizes files and folder similarly, but not the same. Importantly, you can name files and folder on Google Drive with the exact same name, whereas you cannot on your own computer’s operating system. In addition, multiple filepaths can resolve to the same object with how Drive’s are organized. This generally means that using file paths is a bit wonky with these packages.</p>
+<p>Thus, to work with Google files programmatically in R, we will want to rely on the “drive_id”s, which are a sequence of letters and numbers unique for each item.</p>
+<p>You can find the id of a Drive object in its URL - it’s the long sequence at the end. googledrive’s <code>as_id()</code> can isolate it for you, as well as create a special “drive_id” character object for use with googledrive functions.</p>
+<p>I do so here with a folder I made manually on my internet browser called “r_google_demo”:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## set growth rate, r, and carrying capacity K</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## set number of timesteps, t, and preallocate population size vector, N</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"numeric"</span>, <span class="at">length =</span> t)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>N[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="do">## loop through timesteps and calculate population size</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="do">## note: we are considering t = 1 as initial pop size</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(t <span class="sc">-</span> <span class="dv">1</span>)) {</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  N[i<span class="sc">+</span><span class="dv">1</span>]  <span class="ot">=</span> N[i] <span class="sc">*</span> <span class="fu">exp</span>(r <span class="sc">*</span> ((K<span class="sc">-</span>N[i])<span class="sc">/</span>K))</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="do">## plot the output                                 </span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>t, N, <span class="at">type =</span> <span class="st">"o"</span>, <span class="at">xlab =</span> <span class="st">"t"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="when_loops_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_id</span>(<span class="st">"https://drive.google.com/drive/u/0/folders/1NkwtKkDdxIb7h0LzUBkWD71nG_1eW3f_"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;drive_id[1]&gt;
+[1] 1NkwtKkDdxIb7h0LzUBkWD71nG_1eW3f_</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## I can also save it as an object</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>r_google_demo_id <span class="ot">&lt;-</span> <span class="fu">as_id</span>(<span class="st">"https://drive.google.com/drive/u/0/folders/1NkwtKkDdxIb7h0LzUBkWD71nG_1eW3f_"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There are many things you can do with a drive_id, such as…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## look at its metadata</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## drive_get() also takes full URLs, as it silently uses as_id()</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_get</span>(r_google_demo_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>! Using an auto-discovered, cached token.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  To suppress this message, modify your code or options to clearly consent to
+  the use of a cached token.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  See gargle's "Non-interactive auth" vignette for more details:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  &lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ The googledrive package is using a cached token for 'wojan002@umn.edu'.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A dribble: 1 × 3
+  name          id                                drive_resource   
+  &lt;chr&gt;         &lt;drv_id&gt;                          &lt;list&gt;           
+1 r_google_demo 1NkwtKkDdxIb7h0LzUBkWD71nG_1eW3f_ &lt;named list [36]&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## list what is inside</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_ls</span>(r_google_demo_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A dribble: 2 × 3
+  name           id                                           drive_resource   
+  &lt;chr&gt;          &lt;drv_id&gt;                                     &lt;list&gt;           
+1 my_sheets      1F7qR0tUUqZ0T5BfoF8rW2lEvrS8a3A1d            &lt;named list [36]&gt;
+2 sheet_template 1blxzA8Dg_KOsT7va8LzP_M4rvDqdCcpVuSjHklbT-7E &lt;named list [37]&gt;</code></pre>
 </div>
 </div>
-</div>
-<p>This relatively simple loop is what powers this web app:</p>
-<p><a href="https://cwojan.shinyapps.io/discrete_logistic_growth/" class="uri">https://cwojan.shinyapps.io/discrete_logistic_growth/</a></p>
-<p>Cool!</p>
+<p>Both of these functions return “dribbles” which are a type of data frame (more precisely, a tidyverse tibble) that contain the name, id, and metadata (in list form) of Drive objects. That metadata may be useful for more advanced processes.</p>
+<p>It should be noted that <code>drive_ls()</code> can be used without an argument to list out a full drive, but in the case of UMN accounts, this also includes everything that is shared with you, so the function will take a tremendously long time to return all those objects. This also applies to the <code>drive_find()</code> function, which seeks objects based on a character string; it will search everything you have access to.</p>
+<p>If you want to <code>drive_find()</code> within specific folder of yours, you’ll need to learn query strings for the Google API here (I have not!):</p>
+<p><a href="https://developers.google.com/workspace/drive/api/guides/search-files" class="uri">https://developers.google.com/workspace/drive/api/guides/search-files</a></p>
+<p>However, we can still import certain files into R based on criteria that we define using the <code>drive_ls()</code> function, as we will see later.</p>
+<p>But first we will see how to create files, particularly sheets for data entry.</p>
 
 
 
@@ -948,13 +938,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./loop_types.html" class="pagination-link" aria-label="Types of Loops">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of Loops</span></span>
+      <a href="./account_setup.html" class="pagination-link" aria-label="Intro, Packages, and Account Setup">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Intro, Packages, and Account Setup</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./functions.html" class="pagination-link" aria-label="Functions">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./create_sheets.html" class="pagination-link" aria-label="Create New Files and Folders">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Create New Files and Folders</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,0 +1,94 @@
+---
+title: "Backup Your Data"
+---
+
+```{r}
+#| include: false
+
+library(googledrive)
+library(googlesheets4)
+```
+
+So let's say you've entered some data.
+
+The files are there on Google's cloud service, to be accessed from any local device. You can also download them manually. Of course, you may be in the middle of data collection, so the files in your folders are subject to change.
+
+In the case of a blank spreadsheet you created based off of a template, Google will track changes in the version history, but Google is not clear on how long it will keep those changes accessible, or when/if nearby changes are "collapsed" into versions that summarize your versions. This is no good for being able to look back, or general scientific data management principles right?
+
+Well, you can set up a script to download a snapshot of your data to your computer whenever you run it!
+
+This actually will require some functions to manipulate files on your own computer, so let's go over those first:
+
+```{r}
+#| eval: false
+
+## First you want to save a directory where you want to store your backups
+upper_dir <- "~/Documents/UMN/data_backups/research_project_1"
+## and then set your R session to that directory
+setwd(upper_dir)
+
+```
+
+Next, we will create a folder to hold today's backups:
+
+```{r}
+#| eval: false
+
+## save current date
+cur_date <- Sys.Date()
+
+## create a name for the folder with the date
+dir_name <- paste0("project1_data_backup_", cur_date)
+
+## create a folder with that name in the working directory
+dir.create(dir_name)
+
+## now enter backup directory
+setwd(paste0(upper_dir, "/", dir_name))
+```
+
+Now that we have our file directories set up, we can download our files. But first we need to identify them:
+
+```{r}
+#| eval: false
+
+## of course we need to know where to find our files
+data_folder <- drive_get("[your folder URL or id here]")
+
+## and then we want the ids of the data within (spreadsheets)
+## recursive = TRUE returns data in subfolders
+data_ids <- drive_ls(data_folder, type = "spreadsheet", recursive = TRUE)
+
+```
+
+The `data_ids` object will be a dribble, with and `id` column storing the drive ids. We can call it sequentially to download each file to our current working directory (which is our newly created subfolder).
+
+```{r}
+#| eval: false
+
+## download in a loop
+for (i in data_ids$id) {
+  drive_download(file = as_id(i), type = "csv")
+}
+
+## you could also download with walk from purrr
+purrr::walk(data_ids$id, ~ drive_download(file = as_id(.x), type = "csv"))
+
+```
+
+Finally, since this is a backup, we can compress the folder to save storage space:
+
+```{r}
+#| eval: false
+
+## move up a directory
+setwd(upper_dir)
+
+## zip backup folder
+zip(zipfile = dir_name, files = dir_name)
+
+## optionally remove the unzipped folder
+unlink(dir_name, recursive = TRUE)
+```
+
+You can do this as often as you want; I do it at the end of every data collection day. But if you do it more than daily, you'll need to create a more detailed folder name than just the date - you could add a full timestamp with `Sys.time()`.

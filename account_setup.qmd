@@ -1,0 +1,66 @@
+---
+title: "Intro, Packages, and Account Setup "
+---
+
+The goal of this section / workshop is to go over how one can develop a data pipeline with Google Drive where datasheet creation and importing is done entirely in R, without having to manually create Google Sheets or manually download them. We'll also go over how to manually backup your files.
+
+First, we need to install and call the requisite packages: `googledrive` and `googlesheets4`. Overall `googledrive` is for finding, creating, moving, copying, and deleting files and folders, while `googlesheets4` is for reading and writing Google Sheets directly to and from data in your R environment.
+
+Comprehensive info on these packages can be found here:
+- <https://googlesheets4.tidyverse.org/>
+- <https://googledrive.tidyverse.org/>
+
+To install, you can copy the following code:
+
+```{r}
+#| eval: false
+
+install.packages("googledrive")
+install.packages("googlesheets4")
+```
+
+And load them:
+
+```{r}
+
+library(googledrive)
+library(googlesheets4)
+```
+
+With these packages loaded, you'll first need to authorize them with your Google account, such that they can access your drive. You need to authorize both packages separately. Running the functions with no arguments will prompt you to go to your default internet browser to enter your credentials (you may need to make a number selection in the R console).
+
+```{r}
+#| eval: false
+
+drive_auth()
+
+gs4_auth()
+
+```
+
+Your credentials will be stored in a cache locally on your computer, but not within any given R project folder, so that they can be pulled in any R session. The particulars of this storage process are managed by the "gargle" package, which is a dependency of the google packages. You can find where your credentials are cached with this function:
+
+```{r}
+#| eval: false
+
+gargle::gargle_oauth_sitrep()
+
+```
+
+You'll also want to note that when you start running Drive and Sheets functions continually, you will often need to select your authorization or refresh a "stale OAuth token", which usually just involves selecting a number in the R console.
+
+If that doesn't work, you can just deauthorize and reauthorize the packages, which should fix things (and edit what's in your gargle cache):
+
+```{r}
+#| eval: false
+
+drive_deauth()
+gs4_deauth()
+
+drive_auth()
+gs4_auth()
+
+```
+
+
+With this complete, you'll be able to create and read files in your Google Drive completely through R scripts!
